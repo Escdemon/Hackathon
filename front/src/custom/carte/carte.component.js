@@ -54,9 +54,6 @@ function MonController($scope, restService, entityModel) {
             ctx.stroke();
         }
         
-        
-         
- 
         function getCase(x, y)
         {
             for(var z =0; z < cases.length; z++)
@@ -137,7 +134,6 @@ function MonController($scope, restService, entityModel) {
             {
               points.push(new Array($ctrl.rows[$ctrl.rows.length-1].x,$ctrl.rows[$ctrl.rows.length-1].y,$ctrl.rows[$ctrl.rows.length-1].status));  
             }
-          points.push(new Array(x_val,y_val,status));
             setTimeout('load',1000);
         }
         

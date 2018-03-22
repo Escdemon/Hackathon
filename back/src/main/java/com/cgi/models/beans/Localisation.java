@@ -1,7 +1,6 @@
 package com.cgi.models.beans;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 import com.cgi.commons.ref.entity.Action.*;
@@ -44,12 +43,12 @@ public class Localisation extends Entity implements Serializable {
 	private Long id;
 
 	/** Coordonnée x. */
-	@EntityField(sqlName = "COORD_X", sqlType = SqlTypes.DECIMAL, sqlSize = 7, sqlAccuracy = 5)
-	private BigDecimal coordX;
+	@EntityField(sqlName = "COORD_X", sqlType = SqlTypes.INTEGER, sqlSize = 5)
+	private Integer coordX;
 
 	/** Coordonnée y. */
-	@EntityField(sqlName = "COORD_Y", sqlType = SqlTypes.DECIMAL, sqlSize = 7, sqlAccuracy = 5)
-	private BigDecimal coordY;
+	@EntityField(sqlName = "COORD_Y", sqlType = SqlTypes.INTEGER, sqlSize = 5)
+	private Integer coordY;
 
 	/** Heure. */
 	@EntityField(sqlName = "HEURE", sqlType = SqlTypes.TIMESTAMP, sqlSize = 0)
@@ -148,7 +147,7 @@ public class Localisation extends Entity implements Serializable {
 	 *
 	 * @return the value
 	 */
-	public BigDecimal getCoordX() {
+	public Integer getCoordX() {
 		return this.coordX;
 	}
 
@@ -157,7 +156,7 @@ public class Localisation extends Entity implements Serializable {
 	 *
 	 * @param coordX : the value to set
 	 */
-	public void setCoordX(final BigDecimal coordX) {
+	public void setCoordX(final Integer coordX) {
 		this.coordX = coordX;
 	}
 
@@ -166,7 +165,7 @@ public class Localisation extends Entity implements Serializable {
 	 *
 	 * @return the value
 	 */
-	public BigDecimal getCoordY() {
+	public Integer getCoordY() {
 		return this.coordY;
 	}
 
@@ -175,7 +174,7 @@ public class Localisation extends Entity implements Serializable {
 	 *
 	 * @param coordY : the value to set
 	 */
-	public void setCoordY(final BigDecimal coordY) {
+	public void setCoordY(final Integer coordY) {
 		this.coordY = coordY;
 	}
 

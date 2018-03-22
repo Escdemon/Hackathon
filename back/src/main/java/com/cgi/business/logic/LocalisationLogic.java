@@ -1,6 +1,8 @@
 package com.cgi.business.logic;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.cgi.business.application.DefaultLogic;
 import com.cgi.commons.db.DB;
@@ -12,6 +14,11 @@ import com.cgi.commons.ref.entity.Action.Persistence;
 import com.cgi.commons.utils.DateUtils;
 import com.cgi.models.beans.Localisation;
 import com.cgi.models.constants.LocalisationConstants;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 
 /**
  * Business class for the entity Localisation.
@@ -37,12 +44,36 @@ public class LocalisationLogic extends DefaultLogic<Localisation> implements Loc
 		if (Persistence.INSERT.equals(action.getPersistence())) {
 			bean.setHeure(DateUtils.todayNow());
 			bean.setBaliseId(new Long(1));
-			// get position from position.json
-//			JSONParser parser = new JSONParser();
-//			JSONArray a = (JSONArray) parser.parse(new FileReader("c:\\tmp\\position.json"));
-			
+			Localisation temp = getPositionString();
+			if (temp != null) {
+				bean.setCoordX(temp.getCoordX());
+				bean.setCoordY(temp.getCoordY());
+			}			
 		}
 		super.dbOnSave(bean, action, ctx);
+	}
+	
+	private Localisation getPositionString() {
+		try {
+			FileInputStream fis = new FileInputStream(new File("C:\\tmp\\position.txt"));
+			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+			String line = null;
+			Localisation temp = new Localisation();
+			while ((line = br.readLine()) != null) {
+				Pattern p = Pattern.compile("([0-9]*) ([0-9]*)");
+				Matcher m = p.matcher(line);
+				m.find();
+				Integer coordX = Integer.valueOf(m.group(1));
+				Integer coordY = Integer.valueOf(m.group(2));
+				temp.setCoordX(coordX);
+				temp.setCoordY(coordY);
+			}		 
+			br.close();
+			return temp;
+		} catch (Exception e) {
+			
+		}
+		return null;
 	}
 
 }

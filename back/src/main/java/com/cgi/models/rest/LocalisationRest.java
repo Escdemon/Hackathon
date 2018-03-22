@@ -1,7 +1,6 @@
 package com.cgi.models.rest;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -33,10 +32,10 @@ public class LocalisationRest extends RestEntity implements Serializable {
 	private Long id;
 
 	/** Coordonnée x. */
-	private BigDecimal coordX;
+	private Integer coordX;
 
 	/** Coordonnée y. */
-	private BigDecimal coordY;
+	private Integer coordY;
 
 	/** Heure. */
 	private Date heure;
@@ -72,7 +71,7 @@ public class LocalisationRest extends RestEntity implements Serializable {
 	 * @return Valeur de CoordX.
 	 */
 	@XmlElement
-	public BigDecimal getCoordX() {
+	public Integer getCoordX() {
 		return this.coordX;
 	}
 	
@@ -81,7 +80,7 @@ public class LocalisationRest extends RestEntity implements Serializable {
 	 * 
 	 * @param coordX Nouvelle valeur.
 	 */
-	public void setCoordX(final BigDecimal coordX) {
+	public void setCoordX(final Integer coordX) {
 		this.coordX = coordX;
 	}
 
@@ -91,7 +90,7 @@ public class LocalisationRest extends RestEntity implements Serializable {
 	 * @return Valeur de CoordY.
 	 */
 	@XmlElement
-	public BigDecimal getCoordY() {
+	public Integer getCoordY() {
 		return this.coordY;
 	}
 	
@@ -100,7 +99,7 @@ public class LocalisationRest extends RestEntity implements Serializable {
 	 * 
 	 * @param coordY Nouvelle valeur.
 	 */
-	public void setCoordY(final BigDecimal coordY) {
+	public void setCoordY(final Integer coordY) {
 		this.coordY = coordY;
 	}
 

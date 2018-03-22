@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+	<!-- Obligatoire : Configuration de l'accès à la base de données. -->
+	<Resource name="jdbc/nuvia" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/toy50app"
+		username="toy_app_user" password="toy_app_user" maxActive="20" maxIdle="10" maxWait="-1" />
+	
+	
+</Context>

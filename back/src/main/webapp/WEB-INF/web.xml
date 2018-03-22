@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>nuvia</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <!-- Servlet for application monitoring -->
+  <servlet>
+    <servlet-name>MonitorServlet</servlet-name>
+    <servlet-class>com.cgi.commons.ui.utils.MonitorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MonitorServlet</servlet-name>
+    <url-pattern>/monitor</url-pattern>
+  </servlet-mapping>
+  <!--  Rest -->
+  <filter>
+    <filter-name>CORSFilter</filter-name>
+    <filter-class>com.cgi.commons.rest.CORSFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CORSFilter</filter-name>
+    <url-pattern>/rest/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Security filter -->
+  <filter>
+    <filter-name>must-be-anonymous-filter</filter-name>
+    <filter-class>com.cgi.commons.rest.auth.SecurityFilter</filter-class>
+    <init-param>
+      <param-name>clientName</param-name>
+      <param-value>AnonymousClient</param-value>
+    </init-param>
+    <init-param>
+      <param-name>authorizers</param-name>
+      <param-value>must-be-anonymous</param-value>
+    </init-param>
+  </filter>
+  <!-- Allow login and WADL for unauthenticated access -->
+  <filter-mapping>
+    <filter-name>must-be-anonymous-filter</filter-name>
+    <url-pattern>/rest/auth/login</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>must-be-anonymous-filter</filter-name>
+    <url-pattern>/rest/application.wadl</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>must-be-anonymous-filter</filter-name>
+    <url-pattern>/rest/file/dl/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>must-be-anonymous-filter</filter-name>
+    <url-pattern>/rest/file/image/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter>
+    <filter-name>jwt-parameter-filter</filter-name>
+    <filter-class>com.cgi.commons.rest.auth.SecurityFilter</filter-class>
+    <init-param>
+      <param-name>configFactory</param-name>
+      <param-value>com.cgi.commons.rest.auth.SecurityConfigFactory</param-value>
+    </init-param>
+    <init-param>
+      <param-name>clientName</param-name>
+      <param-value>must-be-connected</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jwt-filter</param-name>
+      <param-value>securityHeaders</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>authorizerName</param-name>
+    	<param-value>must-be-connected</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>jwt-parameter-filter</filter-name>
+    <url-pattern>/rest/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>RestWS</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.classnames</param-name>
+      <param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.cgi.commons.rest.api;com.cgi.models.endpoint;com.cgi.commons.rest.provider</param-value>
+    </init-param>
+    <!-- Activate DEBUG -->
+    <!-- <init-param>
+      <param-name>jersey.config.server.provider.classnames</param-name>
+      <param-value>org.glassfish.jersey.filter.LoggingFilter</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jersey.config.server.logging.logger.level</param-name>
+      <param-value>ALL</param-value>
+    </init-param> -->
+    <!-- Disable WADL automatic generration
+    <init-param>
+      <param-name>jersey.config.server.wadl.disableWadl</param-name>
+      <param-value>true</param-value>
+    </init-param> -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestWS</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+</web-app>

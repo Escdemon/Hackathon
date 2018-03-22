@@ -3,7 +3,8 @@ module.exports = (function (ng) {
 
   return ng
     .module('custom', [
-      require('../core/core.module.js')
+      require('../core/core.module.js'),
+      require('./carte/carte.module.js')
     ])
     .config(require('./custom.configuration.js'))
     .name;

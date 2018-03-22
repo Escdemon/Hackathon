@@ -34,7 +34,7 @@ public class ApplicationLogic extends DefaultApplicationLogic {
 			  public void run() {
 				RequestContext ctx = new RequestContext(new User("admin"));
 			    DB.insert(new Localisation(), Localisation.getEntityModel().getAction(LocalisationConstants.Actions.ACTION_CREATE), ctx);
-			    System.out.println("done");
+			    //System.out.println("done");
 			    ctx.getDbConnection().commit();
 			  }
 			})			

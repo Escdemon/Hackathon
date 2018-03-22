@@ -12,12 +12,14 @@ return {
 function MonController($scope, restService, entityModel) {
     var $ctrl = this;
     $ctrl.rows = [];
+    $ctrl.points = [];
     $ctrl.loadDatas = loadDatas;
 
     function loadDatas() {
         var entity = entityModel.entity('localisation');
-        $ctrl.rows = [];
+        
         restService.query(entity,'localisations').then(function (response) {
+            $ctrl.rows = [];
             response.data.results.forEach(function (localisation) {
                 $ctrl.rows.push({x: localisation.T1_coordX, y: localisation.T1_coordY, statut: localisation.Val_T1_statut});
             });
@@ -26,9 +28,6 @@ function MonController($scope, restService, entityModel) {
 
 
     angular.element(document).ready(function () {
-        // charger les données du back => elles sont toutes stockées ensuite dans $ctrl.rows
-        $ctrl.loadDatas();
-        console.log($ctrl.rows);
         
         var cases = new Array();
         var points = new Array();
@@ -115,10 +114,9 @@ function MonController($scope, restService, entityModel) {
             return tab;
         }
         
-        function load()
+        function loadArray()
         {
             $ctrl.loadDatas();
-
             if($ctrl.rows.length != 0 && points.length != 0)
             {
                 var x_fin = points[points.length-1][0];
@@ -126,18 +124,22 @@ function MonController($scope, restService, entityModel) {
                 var k = $ctrl.rows.length-1
                 while($ctrl.rows[k].x != x_fin && $ctrl.rows[k].y != y_fin)
                 {
-                    draw($ctrl.rows[k].x, $ctrl.rows[k].y);
+                    var drawX = ($ctrl.rows[k].x/10);
+                    var drawY = ($ctrl.rows[k].y/10);
+                    draw(drawX, drawY, $ctrl.rows[k].statut);
                     k--;
                 }
             }
             else if ($ctrl.rows.length != 0)
             {
-              points.push(new Array($ctrl.rows[$ctrl.rows.length-1].x,$ctrl.rows[$ctrl.rows.length-1].y,$ctrl.rows[$ctrl.rows.length-1].status));  
+              points.push(new Array($ctrl.rows[$ctrl.rows.length-1].x/10,$ctrl.rows[$ctrl.rows.length-1].y/10,$ctrl.rows[$ctrl.rows.length-1].statut));  
             }
-            setTimeout('load',1000);
+
+
+            //setTimeout('loadArray',1000);
         }
         
-        function draw(x_val, y_val)
+        function draw(x_val, y_val, status)
         {
             var x_rec = Math.floor(x_val/taille[0])*taille[0];
               var y_rec = Math.floor(y_val/taille[1])*taille[1];
@@ -145,17 +147,10 @@ function MonController($scope, restService, entityModel) {
               if (canvas.getContext) {
                 var ctx = canvas.getContext("2d");
                 var origine = points[points.length-1];
-                // Triangle filaire
-                ctx.strokeStyle = 'rgb(75, 0, 130)';
-                ctx.beginPath();
-                ctx.moveTo(origine[0], origine[1]);
-                ctx.lineTo(x_val, y_val);
-                ctx.closePath();
-                ctx.stroke();
+            
 
-                  var status = $("#stat").prop('checked');
                   var rec = getCase(x_rec, y_rec);
-                  if(status == true && rec.status != "error")
+                  if(status == false && rec.status != "error")
                   {
                       ctx.fillStyle = 'rgb(200, 0, 0)';
                       ctx.fillRect(x_rec, y_rec, taille[0], taille[1]);
@@ -170,7 +165,8 @@ function MonController($scope, restService, entityModel) {
               }
         }
         
-        load();
+        loadArray();
+        var intervalID = setInterval(function(){loadArray();}, 1000);
     });
 }
 }(window.angular));

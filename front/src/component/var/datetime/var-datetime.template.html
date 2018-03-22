@@ -1,0 +1,62 @@
+<div data-ng-if="$ctrl.visible"
+     data-ng-class="[{'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                                && ($ctrl.formCtrl.form[$ctrl.id].$touched || $ctrl.formCtrl.form[$ctrl.id].$dirty)}]">
+
+  <var-label data-class-label="{{::$ctrl.classLabel}}" data-label="{{::$ctrl.label}}"
+             data-mandatory="::$ctrl.isMandatory" data-name="{{::$ctrl.id}}-label" data-ng-if="::$ctrl.showLabel"
+             data-is-protected="$ctrl.isProtected">
+  </var-label>
+
+  <div id="{{::$ctrl.id}}"
+      class="value lookup-mode form-control-static col-xs-12"
+      data-ng-class="[$ctrl.classInput, $ctrl.classOffset]"
+      data-ng-if="$ctrl.isReadOnly"
+      data-uib-tooltip="{{$ctrl.tooltip | translate}}"
+      data-tooltip-placement="bottom-left">{{$ctrl.ngModel | date:('common.timestamp-format' | format)}}
+  </div>
+  <div class="edit-mode col-xs-12"
+      data-ng-class="[$ctrl.classInput, $ctrl.classOffset,
+          {'editable' : !$ctrl.isProtected, 'non-editable' : $ctrl.isProtected,
+          'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                          && $ctrl.formCtrl.form[$ctrl.id].$dirty}]"
+      data-ng-if="!$ctrl.isReadOnly">
+
+    <div class="datetime" uib-dropdown>
+      <div
+          class="input-group"
+          data-uib-tooltip="{{$ctrl.tooltip | translate}}"
+          data-tooltip-placement="bottom-left">
+        <input type="text" id="{{::$ctrl.id}}" name="{{::$ctrl.id}}"
+            class="form-control" data-ng-model="$ctrl.datetime"
+            data-ng-required="$ctrl.isMandatory"
+            data-ng-disabled="$ctrl.isProtected"
+            placeholder="{{$ctrl.placeholder}}"
+            ng-change="$ctrl.updateDatetimepicker()"
+            ng-model-options="{ updateOn: 'blur' }">
+        <span class="input-group-btn">
+          <button uib-dropdown-toggle type="button" class="btn"
+            data-ng-class="[{'btn-default' : !$ctrl.formCtrl.form[$ctrl.id].$error.datetime ,
+                    'btn-danger' : $ctrl.formCtrl.form[$ctrl.id].$error.datetime && $ctrl.formCtrl.form[$ctrl.id].$dirty}]"
+            data-ng-disabled="$ctrl.isProtected">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </div>
+      <ul class="dropdown-menu" role="menu">
+        <datetimepicker data-ng-model="$ctrl.ngModel" data-datetimepicker-config="$ctrl.datetimepickerConfig" data-on-set-time="$ctrl.closePicker()" />
+      </ul>
+    </div>
+
+    <span
+        class="help-inline"
+        data-ng-if="$ctrl.formCtrl.form[$ctrl.id].$error.required && $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.mandatory-error"
+        data-translate-value-field="{{::$ctrl.label | translate}}">
+    </span>
+    <span
+        class="help-inline"
+        data-ng-if="$ctrl.formCtrl.form[$ctrl.id].$error.datetime && $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.date-error">
+    </span>
+  </div>
+</div>

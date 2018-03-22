@@ -1,0 +1,76 @@
+/* General structure */
+@header-height: 61px;
+@action-page-header-height: 64px;
+
+@header-logo-width: @header-height;
+@header-language-width: 120px;
+@header-login-max-width: 200px;
+@header-breadcrumbs-padding: 20px;
+
+/* font-variables */
+@font-family: 'Open Sans', sans-serif;
+@title-font-size: 18px;
+@title-panel-font-size: 14px;
+@font-size: 12px;
+@font-size-button: 14px;
+
+/* Color variables */
+@primary-color: #e31837;
+@mandatory-color: red;
+
+@button-primary-color: #e8282c;
+
+@menu-top-color: #e31937;
+@menu-bottom-color:#eb3126;
+@menu-extend-top-color:#cc1631;
+@menu-extend-bottom-color: #d32b23;
+@menu-font-color: #f4a4ae;
+
+/* Table variables */
+@table-bg-hover: #f7f7f7;
+@table-bg-active: #f5f5f5;
+@list-line-height: 42px;
+
+/* Form variables */
+@action-page-button-margin-top: 12px;
+@group-padding-top: 5px;
+@group-padding-bottom: 3px;
+@field-height: 34px;
+
+/* Group-templates variables*/
+@fieldset-padding: 20px;
+@fieldset-margin: 15px 0px;
+@line-padding: 20px;
+@tab-padding: 20px;
+
+
+@placeholder-color: #ccc;
+
+
+/**
+ Mixin definitions
+ */
+.placeholder(@rules) {
+  &::-webkit-input-placeholder {
+    @rules();
+  }
+  &:-moz-placeholder {
+    @rules();
+  }
+  &::-moz-placeholder {
+    @rules();
+  }
+  &:-ms-input-placeholder {
+    @rules();
+  }
+  &::placeholder {
+    @rules();
+  }
+}
+
+.calc(@property, @expression) {
+  @{property}: -moz-calc(@expression);
+  @{property}: -o-calc(@expression);
+  @{property}: -webkit-calc(@expression);
+  @{property}: calc(@expression);
+}

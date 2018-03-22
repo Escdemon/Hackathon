@@ -28,8 +28,8 @@ import static com.cgi.commons.ref.entity.Action.Input.*;
 @Actions({
 	@Action(code = "ATTACH", input = MANY, persistence = Persistence.INSERT, ui = UserInterface.OUTPUT, process =  com.cgi.commons.ref.entity.Action.Process.LINK),
 	@Action(code = "DETACH", input = MANY, persistence = Persistence.DELETE, ui = UserInterface.OUTPUT, process =  com.cgi.commons.ref.entity.Action.Process.LINK),
-	@Action(code = "CREATE_ALERT", input = NONE, persistence = Persistence.INSERT),
-	@Action(code = "CREATE", input = NONE, persistence = Persistence.INSERT),
+	@Action(code = "CREATE_ALERT", input = NONE, persistence = Persistence.INSERT, ui = UserInterface.NONE, process =  com.cgi.commons.ref.entity.Action.Process.CUSTOM),
+	@Action(code = "CREATE", input = NONE, persistence = Persistence.INSERT, ui = UserInterface.NONE, process =  com.cgi.commons.ref.entity.Action.Process.CUSTOM),
 	@Action(code = "UPDATE", persistence = Persistence.UPDATE),
 	@Action(code = "DISPLAY", persistence = Persistence.NONE, ui = UserInterface.READONLY),
 	@Action(code = "DELETE", persistence = Persistence.DELETE, ui = UserInterface.OUTPUT),

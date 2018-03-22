@@ -1,0 +1,13 @@
+<column data-name="T1_id" data-key="localisation.localisation.t1.id.column-label" data-type="numeric"></column>
+<renderer>{{::row['T1_id'] | number:0}}</renderer>
+<column data-name="T1_coordX" data-key="localisation.localisation.t1.coord-x.column-label" data-type="numeric"></column>
+<renderer>{{::row['T1_coordX'] | number:5}}</renderer>
+<column data-name="T1_coordY" data-key="localisation.localisation.t1.coord-y.column-label" data-type="numeric"></column>
+<renderer>{{::row['T1_coordY'] | number:5}}</renderer>
+<column data-name="T1_heure" data-key="localisation.localisation.t1.heure.column-label" data-type="date"></column>
+<renderer>{{::row['T1_heure'] | date:('common.timestamp-format' | translate)}}</renderer>
+<column data-name="T1_statut" data-key="localisation.localisation.t1.statut.column-label"></column>
+<renderer>{{::row['T1_statut']}}</renderer>
+<column data-name="T1_baliseId" data-key="localisation.localisation.t1.balise-id.column-label" data-type="numeric"></column>
+<renderer>{{::row['T1_baliseId'] | number:0}}</renderer>
+

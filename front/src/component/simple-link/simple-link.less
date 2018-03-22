@@ -1,0 +1,85 @@
+@import "../../css/bootstrap.variables.less";
+
+simple-link {
+  @size-input:32;
+  @size-input-with-border: @size-input + 2;
+  @size-delete:18;
+
+  .with-fake {
+    .input-group {
+      display: flex; // To not have table from bootstrap
+    }
+    .dropdown {
+      display: block;
+      width: auto;
+    }
+  }
+  .fake-input {
+    padding-top: 7px;
+    overflow: hidden;
+    display: inline-block;
+    &.with-default-action {
+      width: calc(~"100% - @{size-input-with-border}px");
+    }
+    &.with-actions {
+      width: calc(~"100% - @{size-input-with-border}px");
+      &.with-default-action {
+        width: calc(~"100% - "@size-input-with-border * 2px);
+      }
+    }
+    button.btn-link {
+      border: 0;
+      margin-left: 0 !important;
+      padding: 0;
+    }
+    button.btn-link, span {
+      height: 19px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      width: 100%;
+      text-align: left;
+    }
+    &:hover .display-value .edit {
+      display: inherit;
+    }
+    .display-value .edit {
+      display: none;
+    }
+  }
+
+  .has-feedback .form-control-feedback {
+    top: 0;
+    right: @size-delete * 1px;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 4;
+    display: none;
+
+    &.with-default-action {
+      right: @size-delete + @size-input * 1px;
+    }
+
+    &.with-actions {
+      right: @size-delete + @size-input * 1px;
+      &.with-default-action {
+        right: @size-delete + @size-input * 2px;
+      }
+    }
+  }
+
+  &:hover .has-feedback .form-control-feedback {
+    display: block;
+  }
+
+  .has-error .btn {
+    border-color: @state-danger-text;
+    color: @state-danger-text;
+  }
+
+  ul.dropdown-menu.dropdown-menu-right {
+    left: auto;
+    right: 0;
+  }
+}

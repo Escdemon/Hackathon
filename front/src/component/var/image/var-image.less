@@ -1,0 +1,58 @@
+@import "../../../css/bootstrap.variables.less";
+
+var-image {
+
+  .image,
+  .image-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image {
+    background-size: contain;
+    position: relative;
+    width: (@group-padding-top + @group-padding-bottom + @field-height) * 4;
+    height: (@group-padding-top + @group-padding-bottom + @field-height) * 4;
+    background-repeat: no-repeat;
+  }
+
+  .file-download,
+  .file-name,
+  .file-progress {
+    margin-left: @grid-gutter-width / 2;
+  }
+
+  .image-buttons {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+
+    .btn-round-toy.btn-round-lg-toy.btn-default {
+      margin: @grid-gutter-width / 8;
+      border-width: 2px;
+      color: #fff;
+    }
+
+    .btn-round-toy.btn-default:hover,
+    .btn-round-toy.btn-default:hover i {
+      border-color: @button-primary-color;
+      color: @button-primary-color;
+    }
+  }
+
+  .image:hover .image-buttons {
+    display: flex;
+  }
+
+  .fa-picture-o {
+    font-size: 12em;
+    color: #ccc;
+  }
+
+}

@@ -124,39 +124,6 @@ public class LocalisationEndpoint extends AbstractEndpoint implements Localisati
 			throw ex;
 		}
 	}
-	
-	/**
-	 * Endpoint for action "Créer Alerte"
-	 *
-	 * @return The {@link com.cgi.models.rest.LocalisationRest Rest Entity} if found.
-	 */
-	@GET
-	@Path("/action/create-alert")
-	public RestResponse createAlert(
-		@Context HttpServletRequest httpRequest) {
-	
-		Action action = EntityManager.getEntityModel(ENTITY_NAME).getAction(Actions.ACTION_CREATE_ALERT);
-		BusinessController ctrl = new BusinessController();
-		// Get entity
-		LocalisationRest entity = new LocalisationRest();
-		final Localisation e;
-	
-		try (RequestContext context = WsUserMgr.getInstance().getRequestContext(httpRequest)) {
-			checkIsActionRendered(context, action);
-			Request<Localisation> request = new Request<>(context, ENTITY_NAME, action);
-			com.cgi.commons.ref.controller.Response<?> response = ctrl.process(request);
-			e = (Localisation)response.getEntity();
-			if (null == e) {
-				throw new NotFoundException(10001L, "entity not found");
-			}
-			RestUtils.setRestEntity(e, null, entity);
-			RestResponse restResponse = new RestResponse(entity, context);
-			return restResponse;
-		} catch (Exception ex) {
-			logger.error("Cannot create-alert entity", ex);
-			throw ex;
-		}
-	}
 
 	/**
 	 * Endpoint for action "Créer"
@@ -186,39 +153,6 @@ public class LocalisationEndpoint extends AbstractEndpoint implements Localisati
 			LocalisationRest restEntity = new LocalisationRest();
 			RestUtils.setRestEntity(entity, null, restEntity);
 			RestResponse restResponse = new RestResponse(restEntity, context);
-			return restResponse;
-		} catch (Exception ex) {
-			logger.error("Cannot create entity", ex);
-			throw ex;
-		}
-	}
-	
-	/**
-	 * Endpoint for action "Créer"
-	 *
-	 * @return The {@link com.cgi.models.rest.LocalisationRest Rest Entity} if found.
-	 */
-	@GET
-	@Path("/action/create")
-	public RestResponse create(
-		@Context HttpServletRequest httpRequest) {
-	
-		Action action = EntityManager.getEntityModel(ENTITY_NAME).getAction(Actions.ACTION_CREATE);
-		BusinessController ctrl = new BusinessController();
-		// Get entity
-		LocalisationRest entity = new LocalisationRest();
-		final Localisation e;
-	
-		try (RequestContext context = WsUserMgr.getInstance().getRequestContext(httpRequest)) {
-			checkIsActionRendered(context, action);
-			Request<Localisation> request = new Request<>(context, ENTITY_NAME, action);
-			com.cgi.commons.ref.controller.Response<?> response = ctrl.process(request);
-			e = (Localisation)response.getEntity();
-			if (null == e) {
-				throw new NotFoundException(10001L, "entity not found");
-			}
-			RestUtils.setRestEntity(e, null, entity);
-			RestResponse restResponse = new RestResponse(entity, context);
 			return restResponse;
 		} catch (Exception ex) {
 			logger.error("Cannot create entity", ex);

@@ -1,0 +1,69 @@
+<div
+    class="header-nav-bar"
+    data-ng-class="{'with-language': $ctrl.locales.length > 1}"
+>
+  <img class="header-logo nav-bar-item" src="../img/logo1.png" alt="logo" ng-click="$ctrl.goHome()">
+  <div class="breadcrumbs nav-bar-item">
+    <bread-crumb></bread-crumb>
+  </div>
+
+  <div
+      data-ng-if="$ctrl.locales.length > 1"
+      class="nav-bar-item dropdown language"
+      data-uib-dropdown
+  >
+    <button
+        class="dropdown-toggle nav-bar-item"
+        data-uib-dropdown-toggle
+        aria-haspopup="true"
+        aria-expanded="true">
+      {{'header.' + $ctrl.selectedLocale | translate }}
+    </button>
+    <ul
+        data-uib-dropdown-menu class="dropdown-menu-right dropdown-menu"
+    >
+      <li ng-repeat="locale in $ctrl.locales">
+        <button
+            class="logout"
+            data-ng-click="$ctrl.localeChanged(locale)"
+        >
+          {{'header.' + locale | translate}}
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="header-login nav-bar-item dropdown login" data-uib-dropdown>
+    <button
+        class="dropdown-toggle nav-bar-item user-logo"
+        data-uib-dropdown-toggle
+        aria-haspopup="true"
+        aria-expanded="true"
+    >
+      <img data-ng-if="$ctrl.avatar" ng-src="{{$ctrl.avatar}}"
+           data-uib-tooltip="{{'common.welcome' | translate}} {{$ctrl.login}}"
+           data-tooltip-placement="bottom-right"
+           alt="{{'common.welcome' | translate}} {{$ctrl.login}}"
+      />
+      <img data-ng-if="!$ctrl.avatar" src="../img/user.png"
+           data-uib-tooltip="{{'common.welcome' | translate}} {{$ctrl.login}}"
+           data-tooltip-placement="bottom-right"
+           alt="{{'common.welcome' | translate}} {{$ctrl.login}}"
+      />
+    </button>
+    <ul data-uib-dropdown-menu class="dropdown-menu-right dropdown-menu">
+      <li>
+        <span class="user-login">{{$ctrl.login}}</span>
+      </li>
+      <li>
+        <button
+            class="logout"
+            data-ng-click="$ctrl.gotoLogOut()"
+            data-uib-tooltip="{{'common.logout' | translate}}"
+            data-tooltip-placement="bottom-right"
+        >
+          <span>{{'common.logout' | translate}}</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

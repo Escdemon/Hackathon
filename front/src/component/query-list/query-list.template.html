@@ -1,0 +1,70 @@
+<div data-ng-class="{'panel panel-default': !!$ctrl.label}" class="flex-box" data-ng-if="::$ctrl.display" >
+  <div class="content-toy-picture">
+     <div class="row tableau-toy-entete">
+        <global-search
+            data-criteria="$ctrl.criteria"
+            data-rows-by-page="$ctrl.rowsByPage"
+            data-current-page="$ctrl.currentPage"
+            data-row-count="$ctrl.rows.length"
+            data-total-count="$ctrl.totalRowCount"
+            data-on-change="::$ctrl.search"
+            data-has-search-tpl="$ctrl.hasSearchTpl">
+            <div></div>
+        </global-search>
+    </div>
+   </div>
+  <div class="table-responsive">
+    <table class="table no-border table-condensed" data-ng-class="{'table-hover': !$ctrl.readonly}">
+      <thead data-cmelo-sticky-top="78">
+        <tr>
+          <th data-ng-click="$ctrl.toggleAllRows()" class="checkbox">
+            <span class="span-radio">
+              <input type="checkbox"  title="{{'query-list.select-all' | translate}}" data-ng-checked="$ctrl.allSelected" />
+              <label>
+                <span></span>
+              </label>
+            </span>
+          </th>
+          <th
+              data-ng-repeat="col in $ctrl.columns"
+              data-ng-class="[col.cssClass, {sortable: col.sortable}]"
+              data-ng-click="::$ctrl.sortBy(col)"
+              data-ng-if="::col.visible">
+            <span data-ng-if="col.sortable" class="glyphicon glyphicon-sort" data-ng-class="col.sortCssClass"></span>
+            <span>{{col.titleKey | translate}}</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-ng-class="{'active': row.selected}" data-ng-repeat="row in $ctrl.rows track by row.primaryKey">
+          <td class="checkbox">
+            <span class="span-radio" data-ng-click="::$ctrl.toggleRow(row)">
+              <input type="checkbox"  title="{{::'query-list.select' | translate}}" data-ng-checked="row.selected" data-ng-click="::$ctrl.toggleRow(row)" />
+              <label>
+                <span></span>
+              </label>
+            </span>
+          </td>
+          <!-- cell append here -->
+        </tr>
+      </tbody>
+      <div data-ng-if="!$ctrl.isLoading && $ctrl.rows && !$ctrl.rows.length" class="alert alert-info col-md-10 col-md-offset-1 col-xs-12">
+        {{'query-list.no-data' | translate}}
+      </div>
+            <div data-ng-if="$ctrl.isLoading" class="alert alert-info col-md-10 col-md-offset-1 col-xs-12">
+        {{'query-list.loading' | translate}}
+      </div>
+    </table>
+    <ul data-uib-pagination data-ng-model="$ctrl.currentPage"
+        data-ng-change="$ctrl.search()"
+        data-total-items="$ctrl.totalRowCount"
+        data-items-per-page="$ctrl.rowsByPage"
+        data-max-size="0"
+        data-boundary-links="true"
+        data-first-text="{{'query-list.pagination-first' | translate}}"
+        data-previous-text="{{'query-list.pagination-previous' | translate}}"
+        data-next-text="{{'query-list.pagination-next' | translate}}"
+        data-last-text="{{'query-list.pagination-last' | translate}}">
+    </ul>
+  </div>
+</div>

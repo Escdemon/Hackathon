@@ -1,0 +1,85 @@
+@import "../css/bootstrap.variables.less";
+
+var-header {
+  img.logo {
+    vertical-align: top;
+  }
+
+  .header-nav-bar {
+    width: 100%;
+  }
+
+  .header-nav-bar, .nav-bar-item {
+    height: @header-height;
+    display: inline-block;
+  }
+
+  .header-logo {
+    width: @header-logo-width;
+    cursor: pointer;
+  }
+
+  .dropdown {
+    &.login {
+      width: @header-login-max-width;
+      select {
+        display:inline;
+        width: 90px;
+      }
+    }
+    &.language {
+      width: @header-language-width;
+    }
+    text-align: right;
+    color: @placeholder-color;
+
+    span.user-login {
+      padding: 5px;
+      margin: 5px;
+      border-bottom: 1px solid lightgray;
+    }
+
+    button {
+      margin: 0 10px;
+      padding: 0;
+      background: #fff none;
+      color: @primary-color;
+      border: none;
+    }
+
+    .dropdown-menu button {
+      margin-top: 10px;
+    }
+
+    label {
+       font-weight: 100;
+       font-size: @font-size-button;
+       font-style: italic;
+       width: 160px;
+     }
+  }
+  .with-language .dropdown.login {
+    width: @header-login-max-width - @header-language-width;
+  }
+
+  .user-logo {
+    background-color: #fff;
+    border: none;
+    height: 45px;
+    width: 45px;
+    margin: 10px;
+
+    img {
+      height: 41px;
+      width: 41px;
+      border: 2px solid @primary-color;
+      border-radius: 50%;
+    }
+  }
+
+  .breadcrumbs {
+    @breadcrumbs: @header-logo-width + @header-login-max-width + @header-breadcrumbs-padding;
+    .calc(width, ~"100% - @{breadcrumbs}");
+    padding-left: @header-breadcrumbs-padding;
+  }
+}

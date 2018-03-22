@@ -1,0 +1,130 @@
+@import "../../../css/bootstrap.variables.less";
+
+var-date{
+    /******************* DATE PICKER ANGULAR **********************/
+
+.uib-daypicker,
+.uib-monthpicker,
+.uib-yearpicker {
+
+        th {
+            display: table-cell;
+        }
+
+        thead tr:first-child {
+        background: -webkit-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: -o-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: -moz-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        }
+         thead tr:first-child th {
+        color: #fff;
+        border-radius: inherit;
+        height: 35px;
+        }
+         thead tr:first-child th:hover {
+        background-color: @primary-color;
+        }
+         thead tr:first-child th:nth-child(2) {
+        text-align: center;
+        }
+         thead tr:last-child {
+        height: 40px;
+        }
+         thead tr:last-child th:nth-child(2) {
+        padding-left: 15px;
+        }
+         thead tr:last-child th:first-child {
+        background-color: @primary-color;
+        }
+         thead .uib-right,
+         thead .uib-left,
+         thead .uib-title {
+        background-color: transparent;
+        background-image: none;
+        border: none;
+        color: #fff;
+        box-shadow: none;
+        position: relative;
+        top: 2px;
+        }
+         thead .uib-right i,
+         thead .uib-left i,
+         thead .uib-title i {
+        color: #fff;
+        }
+         .uib-weeks td:first-child {
+        background-color: #f1f1f1;
+        position: relative;
+        top: -3px;
+        }
+         tbody {
+        border-bottom: 1px solid #eaeaea;
+        }
+         tbody .btn-default {
+        background-color: transparent;
+        border: none;
+        color: #333333;
+        box-shadow: none;
+        background-image: none;
+        }
+         tbody .btn-default.active {
+        color: @primary-color;
+        }
+         tbody .btn-default:hover,
+         tbody .btn-default.active:hover {
+        background: -webkit-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: -o-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: -moz-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        border: none;
+        color: #ffffff;
+        box-shadow: none;
+        border-radius: 18px;
+        }
+         tbody .btn-default:hover .text-muted,
+         tbody .btn-default.active:hover .text-muted {
+        color: #ffffff;
+        }
+        li.uib-button-bar {
+        padding: 5px;
+        height: 35px;
+        }
+        li.uib-button-bar .btn-info.uib-datepicker-current,
+        li.uib-button-bar .btn-danger.uib-clear {
+        background: -webkit-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: -o-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: -moz-linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        background: linear-gradient(@primary-color, lighten(@primary-color, 5%));
+        border: inherit;
+        border-radius: 100px;
+        margin-right: 5px;
+        box-shadow: none;
+        border-top-right-radius: 100px!important;
+        border-bottom-right-radius: 100px!important;
+        }
+        li.uib-button-bar .uib-close {
+        background-color: transparent;
+        border: inherit;
+        box-shadow: none;
+        color: #717171;
+        }
+
+        .btn-default[disabled]:hover {
+            background-color: lighten(@primary-color, 5%);
+        }
+    }
+
+    .btn-info,
+    .btn-danger {
+        color: #fff;
+        background-color: @primary-color;
+        border-color: @primary-color;
+    }
+
+    .btn-success {
+        color: #ccc;
+        background-color: transparent;
+        border-color: #ccc;
+    }
+}

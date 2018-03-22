@@ -1,0 +1,220 @@
+
+@import "../css/bootstrap.variables.less";
+
+.title_page{
+  line-height: 50px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/*styles menu de gauche*/
+
+.menu-flex{
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  position: relative;
+  min-height: 100%;
+  z-index: 4;
+  margin: 0;
+  position: relative;
+  background: -webkit-linear-gradient(@menu-extend-top-color, @menu-extend-bottom-color);
+  background: -o-linear-gradient(@menu-extend-top-color, @menu-extend-bottom-color);
+  background: -moz-linear-gradient(@menu-extend-top-color, @menu-extend-bottom-color);
+  background: -ms-linear-gradient(@menu-extend-top-color, @menu-extend-bottom-color);
+}
+
+.side-bar-menu{
+  .calc(min-height, ~"100vh - 61px");
+  min-width: 61px;
+  background: -webkit-linear-gradient(@menu-top-color, @menu-bottom-color);
+  background: -o-linear-gradient(@menu-top-color, @menu-bottom-color);
+  background: -moz-linear-gradient(@menu-top-color, @menu-bottom-color);
+  background: linear-gradient(@menu-top-color, @menu-bottom-color);
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+ 
+.side-bar-menu img.logo-cgi{
+  position: absolute;
+  .calc(left, ~"50% - 18px");
+  width: 22px;
+  bottom: 14px;
+}
+
+.side-bar-menu ul.icons-list{
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin:0;
+  padding: 0;
+  width: 100%;
+  flex-direction: column;
+}
+
+.side-bar-menu ul.icons-list li{
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  list-style: none;
+  position: relative;
+  width: 100%;
+  justify-content : center;
+  padding: 20px 0;
+  color: @menu-font-color;
+  font-size: 20px;
+}
+
+.side-bar-menu ul.icons-list li:hover{
+  cursor: pointer;
+  color:white;
+}
+
+.side-bar-menu ul.icons-list li.active{
+  background: url(../img/arrow-active-menu.png) center right no-repeat;
+  color:white;
+}
+
+.menu-expand{
+  display: none;
+  width: 260px;
+  position: absolute;
+  left:58px;
+  height: 99.99%;
+  margin: 0;
+  overflow: hidden;
+  border: none;
+  margin-left : -318px;
+  transition: margin-left 1s;
+  z-index: -1;
+}
+
+.menu-expand-content{
+  height: 100%;
+  background: -webkit-linear-gradient(@menu-extend-top-color, @menu-extend-bottom-color);
+  background: -o-linear-gradient(@menu-extend-top-color, @menu-extend-bottom-color);
+  background: -moz-linear-gradient(@menu-extend-top-color, @menu-extend-bottom-color);
+  background: linear-gradient(@menu-extend-top-color, @menu-extend-bottom-color);
+  padding: 22px 18px 15px 22px;
+  color:white;
+  min-height: 550px;
+  margin: 0;
+}
+
+.menu-expand .head-title-page{
+  border-bottom: 2px solid @menu-font-color;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.menu-expand .head-title-page h2{
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.menu-expand .head-title-page .close-menu-expand{
+  position: absolute;
+  right: 0;
+  top:-3px;
+}
+
+.menu-expand .head-title-page .close-menu-expand:hover{
+  cursor:pointer;
+}
+
+.menu-expand ul.sous-menu-list{
+  margin-top: 25px;
+  padding: 0;
+  font-size: 12px;
+}
+
+.menu-expand ul.sous-menu-list li{
+  list-style: none;
+  margin: 19px 0;
+  font-weight: 600;
+  cursor: pointer;
+  cursor: hand;
+
+}
+
+.menu-expand ul.sous-menu-list li:last-child{
+  margin-bottom: 0;
+}
+
+.menu-expand ul.sous-menu-list li a{
+  text-decoration: none;
+  color: @menu-font-color;
+}
+
+.menu-expand ul.sous-menu-list li a:hover{
+  color: white;
+}
+
+.menu-expand ul.sous-menu-list li a i{
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.blur-dark{
+  display: none;
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.menu-expand ul.sous-menu-list li ul{
+  display: none;
+  padding-left: 15px;
+}
+
+.menu-open {
+  margin-left : 0;
+}
+
+
+.side-bar-menu .pastille_number{
+  position: absolute;
+  font-family: 'Open Sans', sans-serif;
+  height: 18px;
+  background: white;
+  border-radius: 9px;
+  color: @menu-top-color;
+  padding:0 4px;
+  font-size: 11px;
+  top:10px;
+  right: 10px;
+  line-height: 18px;
+  font-weight: 600;
+  min-width: 18px;
+}
+
+.side-bar-menu .icon_notification{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 14px;
+    color: white;
+}
+
+.menu-expand .pastille_number{
+  height: 18px;
+  background: white;
+  border-radius: 9px;
+  color: @menu-top-color;
+  padding:0 4px;
+  font-size: 11px;
+  margin: 0 4px;
+  min-width: 18px;
+}

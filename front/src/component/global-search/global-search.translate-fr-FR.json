@@ -1,0 +1,9 @@
+{
+  "search": "Rechercher...",
+  "goSearch": "Lancer la recherche",
+  "reset": "R\u00E9initialiser le champ de recherche",
+  "rowCount": "R\u00E9sultats affich\u00E9s",
+  "totalCount": "R\u00E9sultats total",
+  "advancedSearch": "Recherche avanc\u00E9e...",
+  "nb-result": "R\u00E9sultats de {{begin}} \u00e0 {{end}} sur {{nbResult}}"
+}

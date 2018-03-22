@@ -1,0 +1,41 @@
+
+<div class="menu-flex" id="menu-flex">
+  <div class="side-bar-menu">
+    <ul class="icons-list">
+      <li data-ng-repeat="entry in vm.menuFiltered.entries"
+          data-ng-switch="!!entry.nested"
+          data-ng-class="{'active' : (!vm.menuOptions.shown && vm.selectedMenu === entry) || (vm.menuOptions.shown && vm.currentMenu === entry)}"
+          data-ng-click="vm.openMenu(entry)"
+      >
+        <i class="icons {{entry.icon}}" uib-tooltip="{{entry.display | translate}}" tooltip-placement="bottom-left" tooltip-append-to-body="true"></i>
+        <span class="pastille_number" data-ng-if="entry.count">{{vm.count(entry)}}</span>
+      </li>
+    </ul>
+    <img class="logo-cgi" src="../img/cgi_blanc.png" alt="logo cgi">
+  </div>
+  <div
+      data-ng-repeat="entry in vm.menuFiltered.entries"
+      class="menu-expand"
+      data-ng-class="['menu-expand-' + entry.display, {'menu-open' : vm.menuOptions.shown && vm.currentMenu === entry }]"
+      style="display: block;">
+    <div class="menu-expand-content">
+      <div class="head-title-page">
+        <div
+            class="close-menu-expand"
+            data-ng-click="vm.closeMenu()"
+        >
+          <img src="../img/close-menu-expand.png" alt="close menu">
+        </div>
+        <h2>{{entry.display | translate}}</h2>
+      </div>
+      <ul class="sous-menu-list">
+        <li data-ng-repeat="nested in entry.nested">
+          <a data-ng-click="vm.launch(nested)">
+            {{nested.display | translate}}
+            <span class="pastille_number" data-ng-if="nested.count">{{vm.count(nested)}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

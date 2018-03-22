@@ -1,0 +1,10 @@
+{
+  "login": "Identifiant",
+  "password": "Mot de passe",
+  "error": "Erreur lors de l'identification",
+  "mandatory-error": "Le champ '{{field}}' est obligatoire",
+  "connect": "Connexion",
+  "connect-success": "Connexion r\u00E9ussie",
+  "logout-success": "D\u00E9connexion r\u00E9ussie",
+  "title-page": "Connexion"
+}

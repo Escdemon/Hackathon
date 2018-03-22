@@ -1,0 +1,44 @@
+<div data-ng-if="$ctrl.visible"
+     data-ng-class="[{'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                                && ($ctrl.formCtrl.form[$ctrl.id].$touched || $ctrl.formCtrl.form[$ctrl.id].$dirty)}]">
+
+  <var-label data-class-label="{{::$ctrl.classLabel}}" data-label="{{::$ctrl.label}}"
+             data-mandatory="::$ctrl.isMandatory" data-name="{{::$ctrl.id}}-label" data-ng-if="::$ctrl.showLabel"
+             data-is-protected="$ctrl.isProtected">
+  </var-label>
+
+  <div id="{{::$ctrl.id}}"
+       class="value lookup-mode form-control-static col-xs-12"
+       data-ng-class="[$ctrl.classInput, $ctrl.classOffset]"
+       data-ng-if="$ctrl.isReadOnly"
+       data-uib-tooltip="{{$ctrl.tooltip | translate}}"
+       data-tooltip-placement="bottom-left">{{$ctrl.choiceLabelToTranslateFromValue($ctrl.ngModel) | translate}}
+  </div>
+  <div class="edit-mode col-xs-12"
+       data-ng-class="[$ctrl.classInput, $ctrl.classOffset,
+          {'editable' : !$ctrl.isProtected, 'non-editable' : $ctrl.isProtected,
+          'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                          && $ctrl.formCtrl.form[$ctrl.id].$dirty}]"
+       data-ng-if="!$ctrl.isReadOnly">
+    <label class="radio-inline" data-ng-repeat="choice in $ctrl.options">
+      <span
+          class="span-radio"
+          data-uib-tooltip="{{$ctrl.tooltip | translate}}"
+          data-tooltip-placement="bottom-left">
+        <input id="{{::$ctrl.id}}-{{choice.code}}" name="{{::$ctrl.id}}"
+               type="radio"
+               data-ng-model="$ctrl.ngModel"
+               data-ng-value="choice.value"
+               data-ng-disabled="$ctrl.isProtected"
+               data-ng-required="$ctrl.isMandatory"/>
+        <label for="{{::$ctrl.id}}-{{choice.code}}">
+          <span></span>
+        </label>
+        <label
+            for="{{::$ctrl.id}}-{{choice.code}}">
+          {{::$ctrl.choiceLabelToTranslate(choice.code) | translate}}
+        </label>
+      </span>
+    </label>
+  </div>
+</div>

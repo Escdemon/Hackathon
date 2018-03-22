@@ -1,0 +1,14 @@
+-- Target Database : MYSQL
+
+-- Names translations
+-- Toy name --> Toy external name --> Table/column/index name
+
+------------------------
+-- Tables & variables --
+------------------------
+
+
+-------------
+-- Indexes --
+-------------
+

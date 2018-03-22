@@ -1,0 +1,18 @@
+<ng-form class="form-horizontal" name="form">
+   <div class="content-toy-picture" data-ng-init="$ctrl.form = form">
+
+    <div class="form-actions">
+      <button
+          data-ng-repeat="button in ::$ctrl.buttons"
+          data-ng-class="::button.css"
+          data-ng-click="::button.execute(button.subAction)"
+          data-ng-disabled="button.requireValidForm && !$ctrl.form.$valid">
+        {{::button.label | translate}}
+      </button>
+      <span class="form-cpt" data-ng-if="$ctrl.flow.pks.length > 1">
+        {{$ctrl.flow.id + 1}} / {{$ctrl.flow.pks.length}}
+      </span>
+    </div>
+  </div>
+  <div class="action-content" data-ng-transclude></div>
+</ng-form>

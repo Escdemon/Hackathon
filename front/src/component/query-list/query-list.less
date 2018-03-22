@@ -1,0 +1,257 @@
+@import "../../css/bootstrap.variables.less";
+
+query-list {
+
+  .flex-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: stretch;
+    .calc(height, ~"100vh - @{header-height}");
+  }
+
+  .table-responsive {
+    overflow: auto;
+    flex: 1 1 auto;
+    align-self: auto;
+  }
+
+  .content-toy-picture {
+    flex: 0 1 auto;
+    align-self: auto;
+  }
+
+  .table {
+
+    tbody td {
+      font-size: @font-size;
+      color: #333333;
+    }
+
+    thead th {
+      font-size: @font-size;
+      color: #333333;
+      background: #fafafa;
+      font-weight: bold;
+    }
+    thead tr th,
+    tbody tr td {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    thead tr,
+    tbody tr {
+      height: @list-line-height;
+    }
+    thead tr th,
+    tbody tr td {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    tbody tr {
+      border-bottom: 1px solid #f7f7f7;
+      background: white;
+    }
+    tbody tr td:first-child {
+      padding-left: 20px;
+    }
+    tbody tr td:last-child {
+      padding-right: 20px;
+    }
+    thead tr th:first-child {
+      padding-left: 20px;
+    }
+    thead tr th:last-child {
+      padding-right: 20px;
+    }
+    .checkbox {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 0px;
+    }
+    .checkbox label {
+      .calc(min-height, ~"@{list-line-height} - 15px");;
+    }
+    input[type="text"] {
+      border: 1px solid #eaeaea;
+      height: 30px;
+      padding: 0 5px;
+      width: 100%;
+    }
+    td .btn {
+      margin-left: 1px;
+      i {
+        width: auto;
+        font-size: 11px;
+      }
+    }
+    td:last-child {
+      width: 120px;
+      text-align: right;
+    }
+  }
+
+  .cmelo-sticky-on {
+    background-color: #fff;
+  }
+
+  th {
+    cursor: not-allowed;
+    display:inline;
+
+    &:first-child {
+      cursor: default;
+      text-align: center;
+    }
+
+    &.sortable {
+      cursor: pointer;
+
+      &:hover {
+        span.glyphicon-sort {
+          opacity: 1;
+          float: right;
+          
+        }
+      }
+
+      span.glyphicon {
+        margin-left: 0px;
+        margin-right: 0px;
+        float: right;
+      }
+
+      span.glyphicon-sort {
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+
+      span.glyphicon-sort-by-alphabet,
+      span.glyphicon-sort-by-alphabet-alt,
+      span.glyphicon-sort-by-order,
+      span.glyphicon-sort-by-order-alt,
+      span.glyphicon-sort-by-attributes,
+      span.glyphicon-sort-by-attributes-alt {
+        opacity: 1;
+      }
+    }
+  }
+
+  th:first-child,
+  td:first-child {
+    width: 32px;
+    text-align: center;
+  }
+
+  td {
+    text-align: left;
+
+    &.numeric {
+      text-align: right;
+    }
+
+    &.boolean,
+    &.date {
+      text-align: center;
+    }
+  }
+
+  table .dropdown-menu,
+  .tableau-toy-entete {
+
+    .dropdown-menu {
+      top: auto;
+      left: auto;
+      right: 15px;
+    }
+
+    .form-inline {
+      float: left;
+      padding: 15px;
+
+      input.search {
+        border-radius: 20px;
+        margin-left: 25px;
+        width: 280px;
+      }
+    }
+
+    .form-group {
+      margin-top: 0;
+    }
+  }
+  .tableau-entete-bouton-right {
+    float: right;
+    padding: 15px;
+    height: 65px;
+    display: block;
+    content: ' ';
+    width: auto;
+    vertical-align: middle;
+    line-height: 40px;
+  }
+  .search-result {
+    color: #fff;
+    margin-left: 10px;
+  }
+
+  /*Link-lists + select list*/
+  var-form & {
+    margin-top: @group-padding-top;
+
+    .flex-box {
+      height: auto;
+    }
+
+    .btn-toy.btn-default,
+    .btn-round-toy.btn-round-lg-toy.btn-default {
+      color:#bbb;
+      border-color: #bbb;
+    }
+
+    .btn-toy.btn-success,
+    .btn-round-toy.btn-round-lg-toy.btn-success {
+      color:#bbb;
+      border-color: #bbb;
+    }
+
+    .btn-toy.btn-danger,
+    .btn-round-toy.btn-round-lg-toy.btn-danger {
+      color:#bbb;
+      border-color: #bbb;
+    }
+
+    .btn-toy.btn-default[disabled]:hover,
+    .btn-toy.btn-success[disabled]:hover,
+    .btn-toy.btn-danger[disabled]:hover {
+      background-color:transparent;
+      color:#bbb;
+      border-color: #bbb;
+    }
+    .tableau-toy-entete {
+      background-color: #fff;
+    }
+
+    .result-label {
+      color:#bbb;
+      text-shadow: none;
+    }
+  }
+
+  /* Pagination */
+  .pagination {
+    float: right;
+    margin: 0px 20px 20px 0px;
+  }
+
+  .pagination > li.disabled {
+    visibility: hidden;
+  }
+
+  .alert {
+    padding: 5px;
+    margin-top: 5px;
+  }
+}

@@ -1,0 +1,46 @@
+<div data-ng-if="$ctrl.visible"
+     data-ng-class="[{'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                                && ($ctrl.formCtrl.form[$ctrl.id].$touched || $ctrl.formCtrl.form[$ctrl.id].$dirty)}]">
+
+  <var-label data-class-label="{{::$ctrl.classLabel}}" data-label="{{::$ctrl.label}}"
+             data-mandatory="::$ctrl.isMandatory" data-name="{{::$ctrl.id}}-label" data-ng-if="::$ctrl.showLabel"
+             data-is-protected="$ctrl.isProtected">
+  </var-label>
+
+  <div id="{{::$ctrl.id}}"
+      class="value lookup-mode form-control-static col-xs-12"
+      data-ng-class="[$ctrl.classInput, $ctrl.classOffset]"
+      data-ng-if="$ctrl.isReadOnly"
+      data-uib-tooltip="{{$ctrl.tooltip | translate}}"
+      data-tooltip-placement="bottom-left">{{$ctrl.time | date:('commons.time-format' | translate)}}
+  </div>
+  <div class="edit-mode col-xs-12"
+      data-ng-class="[$ctrl.classInput, $ctrl.classOffset,
+          {'editable' : !$ctrl.isProtected, 'non-editable' : $ctrl.isProtected,
+          'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                          && $ctrl.formCtrl.form[$ctrl.id].$dirty}]"
+      data-ng-if="!$ctrl.isReadOnly">
+        
+        <div uib-timepicker 
+            data-ng-model="$ctrl.ngModel" 
+            data-ng-required="$ctrl.isMandatory"
+            data-ng-disabled="$ctrl.isProtected"
+            data-uib-tooltip="{{$ctrl.tooltip | translate}}"
+            data-tooltip-placement="bottom-left"
+            placeholder="{{$ctrl.placeholder}}"
+            ng-change="$ctrl.updateTimepicker()"
+            hour-step="1"
+            minute-step="1" 
+            second-step="1" 
+            show-seconds="true"
+            show-meridian="false"
+            show-spinners="false">
+        </div>
+        <button class="btn btn-default fa fa-clock-o time-now" 
+                ng-click="$ctrl.updateNow()"  
+                data-uib-tooltip="{{'common.now' | translate}}"
+                data-tooltip-placement="bottom-left"
+                data-ng-if="!$ctrl.isProtected">
+        </button>
+  </div>
+</div>

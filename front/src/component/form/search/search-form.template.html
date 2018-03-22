@@ -1,0 +1,13 @@
+<ng-form class="form-horizontal" name="formName">
+  <div data-ng-init="$ctrl.form = formName" data-ng-transclude></div>
+  <div class='search-buttons col-md-4 col-md-offset-4 col-xs-4'>
+    <button type="button" class="btn btn-primary btn-toy" aria-label="{{::'search-form.search' | translate}}" data-ng-click="$ctrl.launchSearch()"
+        data-uib-tooltip="{{::'search-form.search' | translate}}" data-tooltip-placement="bottom-left">
+        <span aria-hidden="true">{{::'search-form.search' | translate}}</span>
+    </button>
+    <button type="button" class="btn btn-primary btn-toy" aria-label="{{::'search-form.reset' | translate}}" data-ng-click="$ctrl.reset()"
+        data-uib-tooltip="{{::'search-form.reset' | translate}}" data-tooltip-placement="bottom-left">
+        <span aria-hidden="true">{{::'search-form.reset' | translate}}</span>
+    </button>
+  </div>
+</ng-form>

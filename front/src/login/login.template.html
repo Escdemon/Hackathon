@@ -1,0 +1,65 @@
+<div class="login-page">
+  <form class="form-horizontal login-form" name="loginForm">
+    <div class="form-group"
+        data-ng-class="{ 'has-error' : loginForm.login.$invalid && loginForm.login.$touched}">
+      <img class="login-logo" src="../img/logo3.png">
+      <div>
+        <input
+            id="login"
+            name="login"
+            type="text"
+            data-ng-model="$ctrl.login"
+            class="form-control"
+            required="required"
+            placeholder="{{'login.login' | translate}}"
+            data-ng-disabled="$ctrl.inProgress"
+        />
+        <span
+            class="help-inline"
+            data-ng-if="loginForm.login.$invalid && loginForm.login.$touched"
+            data-translate="login.mandatory-error"
+            data-translate-value-field="{{'login.login' | translate}}">
+        </span>
+      </div>
+    </div>
+    <div class="form-group"
+        data-ng-class="{ 'has-error' : loginForm.password.$invalid && loginForm.password.$touched}">
+      <div>
+        <input
+            id="password"
+            name="password"
+            type="password"
+            data-ng-model="$ctrl.password"
+            class="form-control"
+            required="required"
+            placeholder="{{'login.password' | translate}}"
+            data-ng-disabled="$ctrl.inProgress"
+        />
+        <span
+            class="help-inline"
+            data-ng-if="loginForm.password.$invalid && loginForm.password.$touched"
+            data-translate="login.mandatory-error"
+            data-translate-value-field="{{'login.password' | translate}}">
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-sm-2">
+        <button
+            type="submit"
+            class="btn btn-primary btn-toy"
+            data-ng-click="$ctrl.connect()"
+            data-ng-disabled="loginForm.$invalid || $ctrl.inProgress">
+          {{'login.connect' | translate}}
+          <span
+              class="glyphicon glyphicon-refresh spinning"
+              data-ng-if="$ctrl.inProgress">
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="login-img">
+    <img src="../img/login.jpg"> </img>
+  </div>
+</div>

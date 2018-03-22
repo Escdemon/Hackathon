@@ -1,0 +1,103 @@
+<group-default
+    data-entity-name="localisation"
+    data-is-protected="$ctrl.isProtected"
+    data-name="localisation"
+    title-key="localisation.localisation.template-title">
+  <div class="row">
+    <pk
+        data-is-protected="$ctrl.isProtected"
+        data-name="pk"
+        data-name-parent="$ctrl.id"
+        data-ng-class="$ctrl.addingClass.pk">
+    </pk>
+
+  </div>
+  <div class="row">
+    <var-input
+        class="form-group col-md-12"
+        data-class-input="col-md-9"
+        data-class-label="control-label col-md-3"
+        data-decimal="5"
+        data-entity-name="localisation"
+        data-is-protected="$ctrl.isProtected"
+        data-label="localisation.coord-x.var-label"
+        data-mandatory="$ctrl.mandatory['coord-x']"
+        data-maximumlength="7"
+        data-name="localisation-coord-x"
+        data-ng-model="$ctrl.data.coordX"
+        data-type="number"
+        data-var-name="coord-x">
+    </var-input>
+
+  </div>
+  <div class="row">
+    <var-input
+        class="form-group col-md-12"
+        data-class-input="col-md-9"
+        data-class-label="control-label col-md-3"
+        data-decimal="5"
+        data-entity-name="localisation"
+        data-is-protected="$ctrl.isProtected"
+        data-label="localisation.coord-y.var-label"
+        data-mandatory="$ctrl.mandatory['coord-y']"
+        data-maximumlength="7"
+        data-name="localisation-coord-y"
+        data-ng-model="$ctrl.data.coordY"
+        data-type="number"
+        data-var-name="coord-y">
+    </var-input>
+
+  </div>
+  <div class="row">
+    <var-datetime
+        class="form-group col-md-12"
+        data-class-input="col-md-9"
+        data-class-label="control-label col-md-3"
+        data-entity-name="localisation"
+        data-is-protected="$ctrl.isProtected"
+        data-label="localisation.heure.var-label"
+        data-mandatory="$ctrl.mandatory.heure"
+        data-name="localisation-heure"
+        data-ng-model="$ctrl.data.heure"
+        data-var-name="heure">
+    </var-datetime>
+
+  </div>
+  <div class="row">
+    <var-input
+        class="form-group col-md-12"
+        data-class-input="col-md-9"
+        data-class-label="control-label col-md-3"
+        data-decimal="0"
+        data-entity-name="localisation"
+        data-is-protected="$ctrl.isProtected"
+        data-label="localisation.statut.var-label"
+        data-mandatory="$ctrl.mandatory.statut"
+        data-maximumlength=""
+        data-name="localisation-statut"
+        data-ng-model="$ctrl.data.statut"
+        data-type="checkbox"
+        data-var-name="statut">
+    </var-input>
+
+  </div>
+  <div class="row">
+    <simple-link
+        class="form-group col-md-12"
+        data-actions="['attach', 'create', 'update', 'display', 'list']"
+        data-class-input="col-md-9"
+        data-class-label="control-label col-md-3"
+        data-data-src="$ctrl.data"
+        data-entity-name="localisation"
+        data-is-protected="$ctrl.isProtected"
+        data-label="localisation.localisation.localisation-r-balise.link-label"
+        data-link="'localisation-r-balise'"
+        data-link-name="localisation-r-balise"
+        data-mandatory="true"
+        data-query-name="balise">
+    </simple-link>
+
+  </div>
+
+</group-default>
+

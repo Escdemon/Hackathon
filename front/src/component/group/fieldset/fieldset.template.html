@@ -1,0 +1,7 @@
+<div class="fieldset-toy" data-ng-if="$ctrl.visible" data-ng-class="{'collapsable': $ctrl.collapsable, 'collapsed': $ctrl.collapsed, 'accordion': $ctrl.collapsable, 'accordion-toy': $ctrl.collapsable}">
+  <div class="title-fieldset-toy">
+    <i class="expand-btn glyphicon glyphicon-menu-down" data-ng-if="::$ctrl.collapsable" data-ng-click="$ctrl.toggle()"></i>
+    <span data-uib-tooltip="{{::$ctrl.tooltip}}" data-tooltip-placement="bottom-left">{{::$ctrl.title}}</span>
+  </div>
+  <div class="panel-body" data-ng-transclude></div>
+</div>

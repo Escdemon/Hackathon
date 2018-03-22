@@ -1,0 +1,30 @@
+@import "../../css/bootstrap.variables.less";
+actions {
+  div.global {
+    display: inline-block;
+  }
+  &.inline-action {
+    white-space: nowrap;
+  }
+
+  .dropdown-menu {
+    a {
+      cursor: pointer;
+    }
+    a.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  @media screen and (max-width: @screen-md-min) {
+    &.inline-action {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: @screen-md-min) {
+  .table-responsive {
+    overflow-x: inherit;
+  }
+}

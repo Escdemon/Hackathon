@@ -1,0 +1,67 @@
+<div>
+  <div class="col-md-6 col-xs-12">
+    <div class="form-group">
+      <input
+          type="text"
+          class="form-control search"
+          placeholder="{{'global-search.search' | translate}}"
+          data-ng-model="$ctrl.searchCriteria"
+          data-ng-model-options="{ debounce: 300 }"
+          data-ng-focus="$ctrl.hideSearchPnl()">
+      <button
+          type="button"
+          class="btn btn-round-toy btn-round-lg-toy btn-primary"
+          aria-label="{{::'global-search.goSearch' | translate}}"
+          data-ng-click="$ctrl.search()"
+          data-ng-if="!$ctrl.live"
+          data-uib-tooltip="{{::'global-search.goSearch' | translate}}"
+          data-tooltip-placement="bottom-left">
+        <span
+            class="glyphicon glyphicon-search"
+            aria-hidden="true">
+        </span>
+      </button>
+      <button
+          type="button"
+          class="btn btn-round-toy btn-round-lg-toy btn-primary"
+          aria-label="{{::'global-search.reset' | translate}}"
+          data-uib-tooltip="{{::'global-search.reset' | translate}}"
+          data-tooltip-placement="bottom-left"
+          data-ng-click="$ctrl.reset()">
+        <span
+            class="glyphicon glyphicon-remove"
+            aria-hidden="true">
+        </span>
+      </button>
+      <button
+          type="button"
+          class="btn btn-round-toy btn-round-lg-toy btn-primary"
+          aria-label="{{::'global-search.advancedSearch' | translate}}"
+          data-ng-click="$ctrl.toggleSearchPnl()"
+          data-uib-tooltip="{{::'global-search.advancedSearch' | translate}}"
+          data-tooltip-placement="bottom-left"
+          data-ng-if="$ctrl.hasSearchTpl">
+        <span
+            class="fa fa-filter"
+            aria-hidden="true">
+        </span>
+      </button>
+      <div
+          class="result-label"
+          data-translate="global-search.nb-result"
+          data-translate-values="{ nbResult: $ctrl.totalCount, begin: (($ctrl.rowsByPage * ($ctrl.currentPage - 1)) + 1), end: ($ctrl.rowsByPage * ($ctrl.currentPage - 1) + $ctrl.rowCount)}"
+          data-ng-if="$ctrl.totalCount">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <ng-transclude
+        data-ng-transclude-slot="actions">
+    </ng-transclude>
+  </div>
+</div>
+<div class="collapse in" data-ng-show="$ctrl.displaySearchPnl">
+  <div class="col-md-12 col-xs-12 form-filter-toy">
+    <div data-ng-transclude="gs-search-tpl"></div>
+  </div>
+</div>

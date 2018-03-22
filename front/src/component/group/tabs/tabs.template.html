@@ -1,0 +1,10 @@
+<div data-ng-if="$ctrl.visible">
+  <ul class="nav-toy nav nav-tabs" role="tablist">
+    <li role="presentation" data-ng-class="{'active' : tab.selected}" data-ng-repeat="tab in $ctrl.tabs" data-ng-if="tab.visible">
+      <a href="#{{tab.name}}" data-ng-click="$ctrl.selectTab(tab, $event)" role="tab" aria-controls="{{tab.name}}"
+        data-uib-tooltip="{{::tab.tooltip}}" data-tooltip-placement="bottom-left">{{::tab.title}}</a>
+    </li>
+  </ul>
+  <div class="tab-content-toy tab-content" data-ng-transclude>
+  </div>
+</div>

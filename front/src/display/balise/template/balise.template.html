@@ -1,0 +1,35 @@
+<group-default
+    data-entity-name="balise"
+    data-is-protected="$ctrl.isProtected"
+    data-name="balise"
+    title-key="balise.balise.template-title">
+  <div class="row">
+    <pk
+        data-is-protected="$ctrl.isProtected"
+        data-name="pk"
+        data-name-parent="$ctrl.id"
+        data-ng-class="$ctrl.addingClass.pk">
+    </pk>
+
+  </div>
+  <div class="row">
+    <var-input
+        class="form-group col-md-12"
+        data-class-input="col-md-9"
+        data-class-label="control-label col-md-3"
+        data-decimal="0"
+        data-entity-name="balise"
+        data-is-protected="$ctrl.isProtected"
+        data-label="balise.nom.var-label"
+        data-mandatory="$ctrl.mandatory.nom"
+        data-maximumlength="20"
+        data-name="balise-nom"
+        data-ng-model="$ctrl.data.nom"
+        data-type="text"
+        data-var-name="nom">
+    </var-input>
+
+  </div>
+
+</group-default>
+

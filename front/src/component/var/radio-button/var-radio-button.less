@@ -1,0 +1,21 @@
+var-radio-button {
+    .span-radio input[type="radio"] {
+    display: none;
+    }
+    .span-radio input[type="radio"] + label span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: -8px 8px -5px 0;
+    vertical-align: middle;
+    background: url(../../../img/radio-toy.png) no-repeat scroll top;
+    cursor: pointer;
+    }
+    .span-radio input[type="radio"] + label span:hover,
+    .span-radio input[type="radio"] + label:hover span {
+    background: url(../../../img/radio-hover-toy.png) no-repeat scroll top;
+    }
+    .span-radio input[type="radio"]:checked + label span {
+    background: url(../../../img/radio-checked-toy.png) no-repeat scroll top;
+    }
+}

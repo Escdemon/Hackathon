@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" data-ng-app="app" data-auto-scroll="[data-ng-view]" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" data-ng-app="app" data-auto-scroll="[data-ng-view]" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" data-ng-app="app" data-auto-scroll="[data-ng-view]" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" data-ng-app="app" data-auto-scroll="[data-ng-view]" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title data-update-title>nuvia</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,200,100" rel="stylesheet" type="text/css">
+  <meta name="description" content=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body data-ng-class="{'loading-screen': loading}">
+  <var-header data-ng-if="userConnected"></var-header>
+  <div class="page-body">
+    <div
+        data-ng-init="menuOptions.shown = false"
+        data-ng-class="{'blur-dark': menuOptions.shown}"
+        style="display: block;"
+        data-ng-click="menuOptions.shown = false"
+    ></div>
+    <menu
+        id="main-menu"
+        data-menu-options="menuOptions"
+        data-ng-if="userConnected"
+    ></menu>
+    <div
+        class="content-toy"
+        data-ng-class="{'content-blur': menuOptions.shown}"
+    >
+      <message></message>
+      <section class="main-section" data-ng-view>
+      </section>
+    </div>
+    <div class="loader"></div>
+  </div>
+</body>
+</html>

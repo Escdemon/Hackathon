@@ -1,0 +1,79 @@
+@import "../../../css/bootstrap.variables.less";
+
+group-tabs {
+    .tab-pane {
+        padding-top: @padding-large-vertical;
+    }
+    .tab-pane.fade {
+        display: none;
+        opacity: 0;
+    }
+    .tab-pane.fade.in {
+        display: block;
+        opacity: 1;
+        animation: fadeIn 0.2s linear;
+    }
+    @keyframes fadeIn {
+        0% {
+            display: none;
+            opacity: 0;
+        }
+        1% {
+            display: block;
+            opacity: 0;
+        }
+        100% {
+            display: block;
+            opacity: 1;
+        }
+    }
+}
+
+.tab-content-toy {
+    background-color: #f7f7f7;
+    padding: @tab-padding;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 30px;
+}
+
+
+.nav-toy {
+    li {
+        a {
+            color: #333333;
+            font-family: 'Open Sans', sans-serif;
+            font-size: @title-panel-font-size;
+            text-transform: uppercase;
+            border-radius: 0px;
+        }
+        a:hover {
+            color: @primary-color;
+        }
+    }
+    li.active {
+        background-color: #f7f7f7;
+        a {
+            background-color: #f7f7f7;
+            border-top: 2px solid @primary-color;
+            font-weight: bold;
+        }
+        a:hover {
+            background-color: #f7f7f7;
+            border-top: 2px solid @primary-color;
+        }
+        a:focus {
+            background-color: #f7f7f7;
+            border-top: 2px solid @primary-color;
+        }
+        a:after{
+            background: none;
+        }
+        a:hover:after {
+            background: none;
+        }
+        a:focus:after {
+            background: none;
+        }
+    }
+}

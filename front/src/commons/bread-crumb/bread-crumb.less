@@ -1,0 +1,23 @@
+bread-crumb {
+  & ol {
+    padding-left: 0;
+  }
+  & ol, & ol li, & {
+    display: inline-block;
+  }
+  & ol li span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  & ol li:before {
+    content: '\00a0>\00a0';
+  }
+
+  & ol li:first-child:before {
+    content: '';
+  }
+  
+  & li:last-child {
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,86 @@
+@import "../../../css/bootstrap.variables.less";
+group-fieldset {
+
+  .expand-btn {
+    transition: transform .2s;
+    transform: rotate(0deg);
+    cursor: pointer;
+    color: @primary-color;
+  }
+
+  .collapsable.collapsed {
+    .expand-btn {
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+    .panel-body {
+      display: none;
+    }
+  }
+}
+
+.fieldset-toy {
+    margin: @fieldset-margin;
+    padding: @fieldset-padding;
+    background-color: #fff;
+    border: 1px solid #dedede;
+    h2 {
+        margin: 0 0 25px 0;
+    }
+}
+
+/** No margin if the fieldset is the 1st element of the page */
+.action-content > * > group-fieldset > .fieldset-toy {
+    margin-top: 0px;
+}
+
+.fieldset-table-toy {
+    background-color: #fff;
+    border: 1px solid #dedede;
+}
+.title-fieldset-toy {
+    color : #333333;
+    font-size: @title-font-size;
+    font-family: @font-family;
+}
+
+
+.accordion-toy {
+    background-color: #f7f7f7;
+    margin-bottom:30px;
+    .panel {
+        background-color: transparent;
+        border: 1px solid #eaeaea;
+        .panel-heading {
+            background-color: transparent;
+            h4 {
+                i {
+                    font-size: @title-panel-font-size;
+                    font-weight: normal;
+                    position: relative;
+                    top: -1px;
+                    color: @primary-color;
+                    transition: none;
+                    transform: none;
+                }
+                a {
+                    color:#333333;
+                    font-size: 20px;
+                    font-family: @font-family;
+                    font-weight: lighter;
+                }
+                a.collapsed {
+                    .fa {
+                        transform: none;
+                    }
+                    i.fa-minus:before {
+                        content: "\f067";
+                    }
+                }
+            }
+        }
+    }
+    .panel:first-child {
+        border-top: 1px solid #eaeaea;
+    }
+}

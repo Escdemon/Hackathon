@@ -1,0 +1,36 @@
+<div
+    data-ng-class="::$ctrl.css"
+    class="global">
+  <div
+    data-ng-class="::$ctrl.cssGroup"
+    data-uib-dropdown>
+    <action
+        data-ng-repeat="action in ::$ctrl.actions"
+        data-action="action"
+        data-rows="$ctrl.rows"
+        data-execute="::$ctrl.perform"
+        data-minimal="::$ctrl.minimal">
+    </action>
+    <button
+        data-ng-class="::$ctrl.moreClass"
+        class="btn btn-default"
+        data-uib-dropdown-toggle
+        data-ng-if="::$ctrl.additionalActions.length"
+        data-ng-click="$ctrl.stopEvent($event);">
+      <span data-ng-class="::$ctrl.moreIcon"></span>
+      <span class="sr-only"></span>
+    </button>
+    <ul data-ng-if="::$ctrl.additionalActions.length"
+        data-uib-dropdown-menu class="dropdown-menu-right">
+      <li
+          data-ng-repeat="action in $ctrl.additionalActions"
+          title="{{::action.title | translate}}">
+        <a data-ng-click="$ctrl.perform(action)"
+            data-ng-class="{'disabled' : !action.isAttach() && action.hasInput() && !$ctrl.rows.length}">
+          <span data-ng-class="::action.icon"></span>
+          {{::action.label | translate}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<input
+    class="hidden"
+    name="{{$ctrl.id}}-hidden"
+    type="text"
+    ng-model="$ctrl.bindValue.data"
+    ng-required="$ctrl.mandatory"/>
+
+<div
+    ng-init="hiddenInput = $ctrl.formCtrl.form[$ctrl.id + '-hidden']; onHover=false"
+    ng-class="{'has-error': !hiddenInput.$valid && hiddenInput.$dirty, 'has-feedback': !$ctrl.readOnly && !$ctrl.isProtected && onHover}"
+    ng-mouseover="onHover=true"
+    ng-mouseleave="onHover=false"
+    ng-if="!$ctrl.hidden"
+>
+  <var-label
+      ng-if="::$ctrl.classLabel"
+      class-label="{{::$ctrl.classLabel}}"
+      class-offset="{{::$ctrl.classOffset}}"
+      label="{{::$ctrl.labelDisplay}}"
+      tooltip="{{::$ctrl.tooltipDisplay}}"
+      mandatory="::$ctrl.mandatory"
+      is-protected="::$ctrl.isProtected"
+      name="{{$ctrl.id}}"
+  ></var-label>
+  <div ng-class="[$ctrl.classInput,{'with-fake': !$ctrl.searchMode || $ctrl.readOnly || $ctrl.isProtected}]">
+    <div class="input-group">
+      <input
+          class="form-control"
+          type="text"
+          id="{{$ctrl.id}}"
+          name="{{$ctrl.id}}"
+          auto-focus="$ctrl.focus"
+          ng-blur="$ctrl.lostFocus()"
+          ng-focus="$ctrl.clearData()"
+          ng-if="$ctrl.searchMode && !($ctrl.readOnly || $ctrl.isProtected)"
+          ng-model="$ctrl.bindValue"
+          uib-typeahead="quickElement as quickElement.display for quickElement in $ctrl.getQuickElement($viewValue)"
+          typeahead-on-select="$ctrl.onSelectQuickSearch()"
+          typeahead-editable="false"
+          typeahead-wait-ms="300"
+          typeahead-min-length="2"
+          typeahead-no-results="$ctrl.noResult"
+          placeholder="{{::$ctrl.placeholderDisplay}}"
+          uib-tooltip="{{::$ctrl.tooltipDisplay}}"
+          tooltip-placement="bottom-left"
+      />
+      <div
+          ng-if="!$ctrl.searchMode || $ctrl.readOnly || $ctrl.isProtected"
+          class="fake-input"
+          ng-class="{
+            'form-control': !$ctrl.readOnly,
+            'form-control-static': $ctrl.readOnly,
+            'with-default-action': $ctrl.defaultButton,
+            'with-actions': $ctrl.displayActions.length
+          }"
+          disabled="{{($ctrl.isProtected && !$ctrl.readOnly) ? 'disabled' : ''}}"
+          uib-tooltip="{{::$ctrl.tooltipDisplay}}"
+          tooltip-placement="bottom-left"
+      >
+        <button
+            ng-if="$ctrl.defaultAction"
+            class="btn btn-link"
+            ng-click="$ctrl.executeAction($ctrl.defaultAction)">
+          {{$ctrl.bindValue.display}}
+        </button>
+        <span
+            ng-if="!$ctrl.defaultAction && $ctrl.bindValue.display"
+        >
+          {{$ctrl.bindValue.display}}
+      </span>
+      </div>
+      <div
+          uib-dropdown class="input-group-btn"
+          ng-if="::($ctrl.displayActions.length || $ctrl.defaultButton)">
+        <action
+            ng-if="::$ctrl.defaultButton"
+            action="::$ctrl.defaultButton"
+            execute="::$ctrl.executeAction"
+            minimal="true"
+            rows="::[$ctrl.data]">
+        </action>
+        <button
+            class="btn btn-default"
+            ng-class="{'btn-danger' :!hiddenInput.$valid && hiddenInput.$dirty}"
+            uib-dropdown-toggle
+            ng-if="::$ctrl.displayActions.length">
+          <span class="glyphicon glyphicon-option-horizontal"></span>
+          <span class="sr-only"></span>
+        </button>
+        <ul uib-dropdown-menu class="dropdown-menu-right">
+          <li
+              ng-repeat="action in $ctrl.displayActions"
+              title="{{::action.title | translate}}">
+            <a ng-click="$ctrl.executeAction(action)">
+              <span ng-class="::action.icon"></span>
+              {{::action.label | translate}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <span
+        class="help-inline"
+        data-ng-if="hiddenInput.$error.required && hiddenInput.$dirty"
+        data-translate="common.mandatory-error"
+        data-translate-value-field="{{::$ctrl.labelDisplay}}"
+    ></span>
+    <span class="help-inline" data-ng-if="$ctrl.searchMode && $ctrl.noResult" data-translate="common.search-no-result"></span>
+    <span
+        class="form-control-feedback glyphicon glyphicon-remove"
+        ng-class="::{'with-default-action': $ctrl.defaultButton, 'with-actions': $ctrl.displayActions.length}"
+        ng-click="$ctrl.clearData()"
+        ng-if="!$ctrl.readOnly && !$ctrl.isProtected && onHover"
+    ></span>
+  </div>
+</div>

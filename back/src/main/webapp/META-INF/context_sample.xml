@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+	<!-- Obligatoire : Configuration de l'accès à la base de données. -->
+	<Resource name="jdbc/nuvia" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/toy50db"
+		username="" password="" maxActive="20" maxIdle="10" maxWait="-1" />
+	
+	<!-- Facultatif : Pour configurer un accès à un LDAP -->
+	<Resource name="ldap/config" auth="Container" type="com.cgi.commons.security.LdapConfig" factory="com.cgi.commons.security.LdapConfigFactory" 
+		java.naming.provider.url="ldap://__server__:__port__/__base_dn__" 
+		java.naming.security.authentication="simple"
+		java.naming.security.principal="__binding_user_dn__"
+		java.naming.security.credentials="__binding_user_password__"
+		ldap.userBaseDn="__user_root_dn__"
+		ldap.userLoginAttr="cn"
+		ldap.userDnAttr="distinguishedName"
+	/>
+	
+	<!-- Facultatif : Pour configurer un serveur de mail -->
+	<Resource name="mail/Session" type="javax.mail.Session"
+		mail.smtp.host="__server__"
+		mail.smtp.port="__port__"
+		mail.transport.protocol="smtp"
+	/>
+	
+</Context>

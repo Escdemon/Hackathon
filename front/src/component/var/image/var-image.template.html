@@ -1,0 +1,43 @@
+<div data-ng-if="$ctrl.visible"
+     data-ng-class="[{'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                                && ($ctrl.formCtrl.form[$ctrl.id].$touched || $ctrl.formCtrl.form[$ctrl.id].$dirty)}]">
+
+  <var-label data-class-label="{{::$ctrl.classLabel}}" data-label="{{::$ctrl.label}}"
+             data-mandatory="::$ctrl.isMandatory" data-name="{{::$ctrl.id}}-label" data-ng-if="::$ctrl.showLabel"
+             data-is-protected="$ctrl.isProtected">
+  </var-label>
+
+  <div data-ng-class="[$ctrl.classInput, $ctrl.classOffset, {'editable' : !$ctrl.isProtected, 'non-editable' : $ctrl.isProtected}, 'col-xs-12']">
+    <div class="image" data-ng-style="{'background-image': 'url(' + $ctrl.getImageURL() + ')'}" data-uib-tooltip="{{$ctrl.tooltip | translate}}">
+      <i class="fa fa-picture-o" data-ng-if="!$ctrl.imageURL"></i>
+      <span class="file-progress glyphicon glyphicon-refresh spinning" data-ng-if="$ctrl.inProgress"></span>
+      <div class="image-buttons">
+        <button class="btn btn-default ng-scope dropdown-toggle btn-round-toy btn-round-lg-toy"
+          data-ngf-select data-ngf-change="$ctrl.upload($file)"
+          title="{{'var-image.upload' | translate}}" data-ng-if="!$ctrl.isProtected">
+          <i class="fa fa-upload fa-2"></i>
+        </button>
+        <button class="btn btn-default ng-scope dropdown-toggle btn-round-toy btn-round-lg-toy"
+          data-ng-click="$ctrl.deleteFile()" title="{{'var-image.delete' | translate}}" data-ng-if="$ctrl.imageURL && !$ctrl.isProtected">
+          <i class="fa fa-times fa-2"></i>
+        </button>
+        <button class="btn btn-default ng-scope dropdown-toggle btn-round-toy btn-round-lg-toy"
+          data-ng-click="$ctrl.download()" title="{{'var-image.download' | translate}}" data-ng-if="$ctrl.imageURL">
+          <i class="fa fa-download fa-2"></i>
+        </button>
+      </div>
+    </div>
+    <span
+        class="help-inline"
+        data-ng-if="$ctrl.formCtrl.form[$ctrl.id].$error.required && $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.mandatory-error"
+        data-translate-value-field="{{::$ctrl.label | translate}}">
+    </span>
+    <span
+        class="help-inline"
+        data-ng-if="$ctrl.formCtrl.form[$ctrl.id].$error.pattern && $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.upload-pattern-error"
+        data-translate-value-pattern="{$ctrl.validation.pattern}">
+    </span>
+  </div>
+</div>

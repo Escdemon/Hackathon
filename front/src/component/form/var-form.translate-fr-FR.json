@@ -1,0 +1,15 @@
+{
+  "validate": "Valider",
+  "delete": "Supprimer",
+  "create": "Cr\u00E9er",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "skip": "Passer",
+  "back": "Retour",
+  "link": "Associer",
+  "modal-dirty-title" : "Quitter sans enregistrer ?",
+  "modal-dirty-text" : "Des donn\u00E9es ont \u00E9t\u00E9 modifi\u00E9es, voulez-vous quitter sans enregistrer ?",
+  "modal-dirty-quit" : "Quitter",
+  "modal-dirty-stay" : "Rester sur la page",
+  "invalid-form" : "Formulaire invalide"
+}

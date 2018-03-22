@@ -1,0 +1,148 @@
+{
+  "name": {
+    "front": "localisation",
+    "back": "localisation"
+  },
+  "actions": [
+    {
+      "name": {
+        "front": "attach",
+        "back": "ATTACH"
+      },
+      "label": "localisation.attach.action-label",
+      "icon": "glyphicon glyphicon-link",
+      "input": "object-multiple",
+      "process": "link",
+      "persistence": "insert",
+      "read-only": false,
+      "io-flux": "display",
+      "priority": 0
+    }, {
+      "name": {
+        "front": "detach",
+        "back": "DETACH"
+      },
+      "label": "localisation.detach.action-label",
+      "icon": "glyphicon glyphicon-scissors",
+      "input": "object-multiple",
+      "process": "link",
+      "persistence": "delete",
+      "read-only": false,
+      "io-flux": "display",
+      "priority": 1
+    }, {
+      "name": {
+        "front": "create-alert",
+        "back": "CREATE_ALERT"
+      },
+      "label": "localisation.create-alert.action-label",
+      "icon": "glyphicon glyphicon-plus",
+      "input": "none",
+      "process": "custom",
+      "persistence": "insert",
+      "read-only": false,
+      "io-flux": "none",
+      "priority": 0
+    }, {
+      "name": {
+        "front": "create",
+        "back": "CREATE"
+      },
+      "label": "localisation.create.action-label",
+      "icon": "glyphicon glyphicon-plus",
+      "input": "none",
+      "process": "custom",
+      "persistence": "insert",
+      "read-only": false,
+      "io-flux": "none",
+      "priority": 2
+    }, {
+      "name": {
+        "front": "update",
+        "back": "UPDATE"
+      },
+      "label": "localisation.update.action-label",
+      "icon": "fa fa-pencil",
+      "input": "object-one",
+      "process": "auto",
+      "persistence": "update",
+      "read-only": false,
+      "io-flux": "input",
+      "priority": 3
+    }, {
+      "name": {
+        "front": "display",
+        "back": "DISPLAY"
+      },
+      "label": "localisation.display.action-label",
+      "icon": "glyphicon glyphicon-eye-open",
+      "input": "object-one",
+      "process": "auto",
+      "persistence": "none",
+      "read-only": true,
+      "io-flux": "display",
+      "priority": 6
+    }, {
+      "name": {
+        "front": "delete",
+        "back": "DELETE"
+      },
+      "label": "localisation.delete.action-label",
+      "icon": "glyphicon glyphicon-trash",
+      "input": "object-one",
+      "process": "auto",
+      "persistence": "delete",
+      "read-only": true,
+      "io-flux": "display",
+      "priority": 7
+    }, {
+      "name": {
+        "front": "list",
+        "back": "LIST"
+      },
+      "label": "localisation.list.action-label",
+      "icon": "glyphicon glyphicon-eye-open",
+      "input": "query",
+      "process": "auto",
+      "persistence": "none",
+      "read-only": false,
+      "io-flux": "display",
+      "priority": 8
+    }
+  ],
+  "links": [
+    {
+      "name": {
+        "front": "localisation-r-balise",
+        "back": "localisationRBalise"
+      },
+      "entity": "balise",
+      "fk": {
+        "baliseId": "id"
+      }
+    }
+  ],
+  "queries": [
+    {
+      "name": "localisation"
+    }
+  ],
+  "pk": [
+    "id"
+  ],
+  "pkMap": {
+    "id": "L"
+  },
+  "allowedValues": {
+    "statut": [
+      {
+        "code": "VRAI",
+        "value": true,
+        "isInitial": true
+      }, {
+        "code": "FAUX",
+        "value": false
+      }
+    ]
+  }
+}

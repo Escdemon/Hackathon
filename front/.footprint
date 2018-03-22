@@ -1,0 +1,8 @@
+
+### Generation options
+encoding=windows-1252
+locale=default
+menu.nested=restricted
+menu.type=vertical
+rest.url.base=http://localhost:8080/nuvia/rest/
+

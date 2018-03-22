@@ -1,0 +1,20 @@
+{
+  "mandatory-error": "Le champ '{{field}}' est obligatoire.",
+  "number-min-max-error": "La valeur de '{{field}}' doit \u00EAtre comprise entre {{min}} et {{max}}.",
+  "number-pattern-error": "La valeur de '{{field}}' doit suivre le mod\u00E8le suivant : {{pattern}} .",
+  "date-error": "La date n'est pas valide.",
+  "date-popup-current" : "Aujourd'hui",
+  "date-popup-clear" : "Effacer",
+  "date-popup-close" : "Fermer",
+  "date-format": "dd/MM/yyyy",
+  "time-format": "HH:mm:ss",
+  "timestamp-format": "dd/MM/yyyy HH:mm:ss.sss",
+  "trueText": "Oui",
+  "falseText": "Non",
+  "search-indifferent": "Indiff\u00E9rent",
+  "search-no-result": "Aucun r\u00E9sultat ne correspond \u00E0 votre recherche",
+  "upload-pattern-error" : "Ce fichier ne r\u00E9pond pas au mod\u00E8le suivant : {{pattern}}.",
+  "logout": "Se d\u00E9connecter",
+  "welcome": "Bienvenue",
+  "now": "Maintenant"
+}

@@ -1,0 +1,10 @@
+<label
+    id="{{::$ctrl.id}}"
+    for="{{::$ctrl.tplName}}"
+    data-ng-if="$ctrl.displayingLabel()"
+    data-ng-class="[$ctrl.classLabel, $ctrl.classOffset, $ctrl.name,
+        {'editable' : !$ctrl.isProtected, 'non-editable' : $ctrl.isProtected,
+          'edit-mode' : $ctrl.editForm(), 'lookup-mode' : !$ctrl.editForm(),
+          'mandatory' : $ctrl.mandatory && !$ctrl.searchForm}, 'col-xs-12']">
+  {{::$ctrl.label | translate}}
+</label>

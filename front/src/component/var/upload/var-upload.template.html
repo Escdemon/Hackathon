@@ -1,0 +1,64 @@
+<div data-ng-if="$ctrl.visible"
+     data-ng-class="[{'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                                && ($ctrl.formCtrl.form[$ctrl.id].$touched || $ctrl.formCtrl.form[$ctrl.id].$dirty)}]">
+
+  <var-label data-class-label="{{::$ctrl.classLabel}}" data-label="{{::$ctrl.label}}"
+             data-mandatory="::$ctrl.isMandatory" data-name="{{::$ctrl.id}}-label" data-ng-if="::$ctrl.showLabel"
+             data-is-protected="$ctrl.isProtected">
+  </var-label>
+
+  <div id="{{::$ctrl.id}}"
+      class="value lookup-mode form-control-static col-xs-12"
+      data-ng-class="[$ctrl.classInput, $ctrl.classOffset]"
+      data-ng-if="$ctrl.isReadOnly && $ctrl.downloadLink"
+      data-uib-tooltip="{{$ctrl.tooltip}}"
+      data-tooltip-placement="bottom-left">
+      {{$ctrl.ngModel.name}}
+      <button class="btn btn-default" data-ng-click="$ctrl.download()" title="{{'var-upload.download' | translate}}">
+        <i class="glyphicon glyphicon-download-alt"></i>
+      </button>
+  </div>
+  <div class="edit-mode col-xs-12"
+      data-ng-class="[$ctrl.classInput, $ctrl.classOffset,
+          {'editable' : !$ctrl.isProtected, 'non-editable' : $ctrl.isProtected,
+          'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                          && $ctrl.formCtrl.form[$ctrl.id].$dirty}]"
+      data-ng-if="!$ctrl.isReadOnly">
+    <span data-ngf-drop data-ngf-select class="drop-box"
+        id="{{::$ctrl.id}}"
+        data-ng-if="!$ctrl.isProtected"
+        data-ng-model="$ctrl.file"
+        data-ng-required="$ctrl.isMandatory"
+        data-ngf-change="$ctrl.upload($file)"
+        data-ngf-multiple="false"
+        data-ngf-drag-over-class="'dragover'"
+        data-ngf-allow-dir="true"
+        data-ngf-validate="$ctrl.validation"
+        data-ngf-accept="$ctrl.validation.pattern"
+        data-ng-disabled="$ctrl.isProtected"
+        data-uib-tooltip="{{$ctrl.tooltip | translate}}"
+        data-tooltip-placement="bottom-left">{{$ctrl.uploadLabel | translate}}</span>
+    <span class="file-progress glyphicon glyphicon-refresh spinning" data-ng-if="$ctrl.inProgress"></span>
+    <span class="file-name" data-ng-if="!$ctrl.ngModel['null'] && $ctrl.ngModel.name">{{$ctrl.ngModel.name}}</span>
+    <span class="file-download btn-group" data-ng-if="$ctrl.downloadLink">
+      <button class="btn btn-default" data-ng-click="$ctrl.deleteFile()" title="{{'var-upload.delete' | translate}}" data-ng-if="!$ctrl.isProtected">
+        <i class="glyphicon glyphicon-remove"></i>
+      </button>
+      <button class="btn btn-default" data-ng-click="$ctrl.download()" title="{{'var-upload.download' | translate}}">
+        <i class="glyphicon glyphicon-download-alt"></i>
+      </button>
+    </span>
+    <span
+        class="help-inline"
+        data-ng-if="$ctrl.formCtrl.form[$ctrl.id].$error.required && $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.mandatory-error"
+        data-translate-value-field="{{::$ctrl.label | translate}}">
+    </span>
+    <span
+        class="help-inline"
+        data-ng-if="$ctrl.formCtrl.form[$ctrl.id].$error.pattern && $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.upload-pattern-error"
+        data-translate-value-pattern="{$ctrl.validation.pattern}">
+    </span>
+  </div>
+</div>

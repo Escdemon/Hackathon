@@ -1,0 +1,14 @@
+{
+  "attach.action-label": "Attacher",
+  "balise.t1.id.column-label": "Technical ID",
+  "balise.t1.nom.column-label": "Nom",
+  "balise.t1.w$-desc.column-label": "Description",
+  "balise.template-title": "BALISE",
+  "create.action-label": "Cr\u00E9er",
+  "delete.action-label": "Supprimer",
+  "detach.action-label": "D\u00E9tacher",
+  "display.action-label": "Afficher",
+  "list.action-label": "Lister",
+  "nom.var-label": "Nom",
+  "update.action-label": "Modifier"
+}

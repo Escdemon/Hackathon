@@ -1,0 +1,40 @@
+<ol
+    data-ng-if="$ctrl.contexts.length < $ctrl.const.MAX"
+    class="bread-crumb-expend">
+  <li
+      data-ng-repeat="context in $ctrl.contexts"
+      data-ng-class="{'now':$ctrl.current == context}">
+    <span
+        data-ng-click="$ctrl.goto(context)"
+        data-uib-tooltip="{{context.titleTooltip | translate}}"
+        data-tooltip-placement="bottom">
+    {{context.title}}
+    </span>
+  </li>
+</ol>
+<ol
+    data-ng-if="$ctrl.contexts.length >= $ctrl.const.MAX"
+    class="bread-crumb-compact">
+  <li
+      data-ng-repeat="n in $ctrl.range(0 ,$ctrl.const.NB_DISPLAY_BEGIN - 1)"
+      class="bread-crumb-begin">
+    <span data-ng-click="$ctrl.goto($ctrl.contexts[n])">
+    {{$ctrl.contexts[n].title}}
+    </span>
+  </li>
+
+  <li class="bread-crumb-hidden">
+    <span
+        data-uib-tooltip-template="'bread-crumb/tooltip-hidden.template.html'"
+        data-tooltip-popup-close-delay="1100"
+        data-tooltip-placement="bottom"> ... </span>
+  </li>
+
+  <li
+      data-ng-repeat="n in $ctrl.range($ctrl.contexts.length - 1 - $ctrl.const.NB_DISPLAY_END, $ctrl.contexts.length - 1)"
+      class="bread-crumb-end">
+    <span data-ng-click="$ctrl.goto($ctrl.contexts[n])">
+    {{$ctrl.contexts[n].title}}
+    </span>
+  </li>
+</ol>

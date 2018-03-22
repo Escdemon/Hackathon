@@ -1,0 +1,10 @@
+{
+  "no-data": "Aucun r\u00E9sultat",
+  "loading": "Chargement",
+  "select": "S\u00E9lectionner",
+  "select-all": "Tout s\u00E9lectionner",
+  "pagination-first": "<<",
+  "pagination-previous": "<",
+  "pagination-next": ">",
+  "pagination-last": ">>"
+}

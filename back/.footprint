@@ -1,0 +1,28 @@
+
+### Generated with layers
+* rorschach (5.1.3-SNAPSHOT)
+* owl (5.1.3-SNAPSHOT)
+* jweb (5.1.3-SNAPSHOT)
+* sql (5.1.3-SNAPSHOT)
+
+### Generation options
+actionTooltips=false
+compatibilityVersion=-1
+dataGenerator=false
+database=MYSQL
+datasource=auto
+encoding=Windows-1252
+execTimesStack=false
+exportData=true
+forceSecurityGeneration=false
+locale=default
+lock=none
+mavenProject=true
+multiapp=false
+packages=com.cgi
+persistence.schema=none
+sequence=fixed
+testUnits=false
+unicode=false
+webServer=tomcat7
+

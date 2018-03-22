@@ -1,0 +1,8 @@
+{
+  "http-response-no-response": "Connexion au serveur impossible, contactez votre administrateur. {{error}}",
+  "http-response-bad-credentials": "Authentification n\u00E9cessaire ({{code}}) {{error}}",
+  "http-response-not-found": "Page non trouv\u00E9e ({{code}}) {{error}}",
+  "http-response-server-error": "Erreur interne serveur ({{code}}) {{error}}",
+  "http-response-general-error": "Erreur g\u00E9n\u00E9ral ({{code}}) {{error}}",
+  "menu-action-no-element-error": "Vous devez impl\u00E9menter la m\u00E9thode menu-action pour s\u00E9lectionner l'instance de '{{entity}}' \u00E0 traiter"
+}

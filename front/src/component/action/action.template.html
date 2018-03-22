@@ -1,0 +1,18 @@
+<button
+    class="btn action"
+    data-uib-tooltip="{{::$ctrl.tooltip | translate}}"
+    data-tooltip-append-to-body="true"
+    data-ng-class="::$ctrl.addingClass"
+    data-ng-click="$ctrl.execute($ctrl.action)"
+    data-ng-disabled="!$ctrl.isEnabled()">
+  <span
+      class="action-icon"
+      data-ng-class="::$ctrl.icon"
+      data-ng-if="::$ctrl.icon">
+  </span>
+  <span
+      class="action-label"
+      data-ng-if="::$ctrl.label">
+    {{::$ctrl.label | translate}}
+  </span>
+</button>

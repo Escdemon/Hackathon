@@ -1,0 +1,113 @@
+{
+  "name": {
+    "front": "balise",
+    "back": "balise"
+  },
+  "actions": [
+    {
+      "name": {
+        "front": "attach",
+        "back": "ATTACH"
+      },
+      "label": "balise.attach.action-label",
+      "icon": "glyphicon glyphicon-link",
+      "input": "object-multiple",
+      "process": "link",
+      "persistence": "insert",
+      "read-only": false,
+      "io-flux": "display",
+      "priority": 0
+    }, {
+      "name": {
+        "front": "detach",
+        "back": "DETACH"
+      },
+      "label": "balise.detach.action-label",
+      "icon": "glyphicon glyphicon-scissors",
+      "input": "object-multiple",
+      "process": "link",
+      "persistence": "delete",
+      "read-only": false,
+      "io-flux": "display",
+      "priority": 1
+    }, {
+      "name": {
+        "front": "create",
+        "back": "CREATE"
+      },
+      "label": "balise.create.action-label",
+      "icon": "glyphicon glyphicon-plus",
+      "input": "none",
+      "process": "auto",
+      "persistence": "insert",
+      "read-only": false,
+      "io-flux": "input",
+      "priority": 2
+    }, {
+      "name": {
+        "front": "update",
+        "back": "UPDATE"
+      },
+      "label": "balise.update.action-label",
+      "icon": "fa fa-pencil",
+      "input": "object-one",
+      "process": "auto",
+      "persistence": "update",
+      "read-only": false,
+      "io-flux": "input",
+      "priority": 3
+    }, {
+      "name": {
+        "front": "display",
+        "back": "DISPLAY"
+      },
+      "label": "balise.display.action-label",
+      "icon": "glyphicon glyphicon-eye-open",
+      "input": "object-one",
+      "process": "auto",
+      "persistence": "none",
+      "read-only": true,
+      "io-flux": "display",
+      "priority": 6
+    }, {
+      "name": {
+        "front": "delete",
+        "back": "DELETE"
+      },
+      "label": "balise.delete.action-label",
+      "icon": "glyphicon glyphicon-trash",
+      "input": "object-one",
+      "process": "auto",
+      "persistence": "delete",
+      "read-only": true,
+      "io-flux": "display",
+      "priority": 7
+    }, {
+      "name": {
+        "front": "list",
+        "back": "LIST"
+      },
+      "label": "balise.list.action-label",
+      "icon": "glyphicon glyphicon-eye-open",
+      "input": "query",
+      "process": "auto",
+      "persistence": "none",
+      "read-only": false,
+      "io-flux": "display",
+      "priority": 8
+    }
+  ],
+  "links": [],
+  "queries": [
+    {
+      "name": "balise"
+    }
+  ],
+  "pk": [
+    "id"
+  ],
+  "pkMap": {
+    "id": "L"
+  },
+  "allowedValues": {}
+}

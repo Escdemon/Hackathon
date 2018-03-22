@@ -1,0 +1,37 @@
+<div data-ng-if="$ctrl.visible"
+     data-ng-class="[{'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                                && ($ctrl.formCtrl.form[$ctrl.id].$touched || $ctrl.formCtrl.form[$ctrl.id].$dirty)}]">
+
+  <var-label data-class-label="control-label {{::$ctrl.classLabel}}" data-label="{{::$ctrl.label | translate}}"
+             data-mandatory="::$ctrl.isMandatory" data-name="{{::$ctrl.id}}-label" data-ng-if="::$ctrl.showLabel"
+             data-is-protected="$ctrl.isProtected">
+  </var-label>
+
+  <div id="{{::$ctrl.id}}"
+       class="value form-control-static"
+       data-ng-class="[$ctrl.classInput, $ctrl.classOffset]"
+       data-ng-if="$ctrl.isProtected"
+       data-uib-tooltip="{{::$ctrl.tooltip | translate}}"
+       data-tooltip-placement="bottom-left">
+    {{$ctrl.getOption($ctrl.ngModel).label}}
+  </div>
+
+  <div data-ng-class="[$ctrl.classInput, $ctrl.classOffset]" data-ng-if="!$ctrl.isProtected">
+    <select id="{{::$ctrl.id}}"
+            name="{{::$ctrl.id}}"
+            class="value form-control"
+            data-ng-class="{'placeholder': $ctrl.ngModel == undefined}"
+            data-ng-model="$ctrl.ngModel"
+            data-ng-required="$ctrl.isMandatory"
+            data-ng-options="opt.value as opt.label disable when opt.disabled for opt in $ctrl.opts"
+            data-uib-tooltip="{{::$ctrl.tooltip | translate}}"
+            data-tooltip-placement="bottom-left"
+            data-ng-change="$ctrl.change && $ctrl.change()">
+    </select>
+    <span class="help-inline"
+          data-ng-if="$ctrl.formCtrl.form[$ctrl.id].$error.required && ($ctrl.formCtrl.form[$ctrl.id].$touched || $ctrl.formCtrl.form[$ctrl.id].$dirty)"
+          data-translate="common.mandatory-error" data-translate-value-field="{{::$ctrl.label | translate}}">
+    </span>
+  </div>
+
+</div>

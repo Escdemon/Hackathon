@@ -1,0 +1,136 @@
+<div data-ng-if="::$ctrl.visible"
+     data-ng-class="[{'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                                && ($ctrl.formCtrl.form[$ctrl.id].$touched || $ctrl.formCtrl.form[$ctrl.id].$dirty)}]">
+
+  <!--
+   varLabel for all cases but editable type checkbox in searchtemplate
+   (replaced as radio-button which manages the label)
+  -->
+  <var-label data-class-label="{{::$ctrl.classLabel}}" data-label="{{::$ctrl.label}}"
+             data-mandatory="::$ctrl.isMandatory" data-name="{{::$ctrl.id}}-label"
+             data-is-protected="::$ctrl.isProtected"
+             data-ng-if="::$ctrl.showLabel && !($ctrl.type === 'checkbox' && $ctrl.searchForm)">
+  </var-label>
+  <!-- isReadOnly for type number -->
+  <div id="{{::$ctrl.id}}"
+       class="value lookup-mode form-control-static col-xs-12"
+       data-ng-class="::[$ctrl.classInput, $ctrl.classOffset]"
+       data-ng-if="::$ctrl.isReadOnly && $ctrl.type === 'number'"
+       data-uib-tooltip="{{::$ctrl.tooltip | translate}}"
+       data-tooltip-placement="bottom-left">
+            <span data-ng-if="$ctrl.isAmount && $ctrl.amountOptions.position == 'left'">
+                {{::$ctrl.amountOptions.currency}}
+            </span>
+            {{$ctrl.ngModel | number}}
+            <span data-ng-if="$ctrl.isAmount && $ctrl.amountOptions.position == 'right'"  >
+                {{::$ctrl.amountOptions.currency}}
+            </span>
+  </div>
+  <!-- isReadOnly for type checkbox -->
+  <div id="{{::$ctrl.id}}"
+      class="value lookup-mode form-control-static col-xs-12"
+      data-ng-class="::[$ctrl.classInput, $ctrl.classOffset]"
+      data-ng-if="::$ctrl.isReadOnly && $ctrl.type === 'checkbox'"
+      data-uib-tooltip="{{::$ctrl.tooltip | translate}}"
+      data-tooltip-placement="bottom-left">
+      {{$ctrl.getOption($ctrl.ngModel)}}
+  </div>
+  <!-- isReadOnly for all other types -->
+  <div id="{{::$ctrl.id}}"
+       class="value lookup-mode form-control-static col-xs-12"
+       data-ng-class="::[$ctrl.classInput, $ctrl.classOffset]"
+       data-ng-if="::$ctrl.isReadOnly && $ctrl.type !== 'number' && $ctrl.type !== 'checkbox'"
+       data-uib-tooltip="{{::$ctrl.tooltip | translate}}"
+       data-tooltip-placement="bottom-left">{{$ctrl.ngModel}}
+  </div>
+  <!-- editable for all cases but editable type checkbox in searchtemplate -->
+  <div class="edit-mode col-xs-12"
+       data-ng-class="[$ctrl.classInput, $ctrl.classOffset,
+          {'editable' : !$ctrl.isProtected, 'non-editable' : $ctrl.isProtected,
+          'has-error' : $ctrl.formCtrl.form[$ctrl.id].$invalid
+                          && $ctrl.formCtrl.form[$ctrl.id].$dirty}]"
+       data-ng-if="::!$ctrl.isReadOnly && !($ctrl.type === 'checkbox' && $ctrl.searchForm)">
+    <span
+        class="span-radio"
+        data-ng-if="::$ctrl.type === 'checkbox'"
+        data-uib-tooltip="{{::$ctrl.tooltip | translate}}"
+        data-tooltip-placement="bottom-left">
+      <input
+          data-ng-if="$ctrl.type === 'checkbox'"
+          id="{{::$ctrl.id}}"
+          name="{{::$ctrl.id}}"
+          type="checkbox"
+          data-ng-model="$ctrl.ngModel"
+          data-ng-disabled="::$ctrl.isProtected"
+          data-ng-required="::$ctrl.mandatory"/>
+      <label data-ng-if="::$ctrl.type === 'checkbox'" for="{{::$ctrl.id}}">
+          <span data-ng-if="::$ctrl.type === 'checkbox'"></span>
+      </label>
+    </span>
+    <span
+        data-ng-if="::$ctrl.type !== 'checkbox'"
+        data-uib-tooltip="{{::$ctrl.tooltip | translate}}"
+        data-tooltip-placement="bottom-left"
+        class="input-group">
+        <span data-ng-if="$ctrl.isAmount && $ctrl.amountOptions.position == 'left'"  class="input-group-addon">
+                {{::$ctrl.amountOptions.currency}}
+        </span>
+        <input
+          id="{{::$ctrl.id}}" name="{{::$ctrl.id}}"
+          type="{{::$ctrl.type}}"
+          class="value"
+          data-ng-class="::[{'checkbox' : $ctrl.type === 'checkbox',
+                            'form-control' : $ctrl.type !== 'checkbox'}]"
+          placeholder="{{::$ctrl.placeholder | translate}}"
+          maxlength="{{::$ctrl.maxlength}}"
+          min="{{::$ctrl.min}}"
+          max="{{::$ctrl.max}}"
+          step="{{::$ctrl.step}}"
+          data-ng-model="$ctrl.ngModel"
+          data-ng-disabled="::$ctrl.isProtected"
+          data-ng-required="::$ctrl.isMandatory"
+          data-ng-pattern="::$ctrl.nbPattern"/>
+        <span data-ng-if="$ctrl.isAmount && $ctrl.amountOptions.position == 'right'"  class="input-group-addon">
+            {{::$ctrl.amountOptions.currency}}
+        </span>
+    </span>
+    <span
+        class="help-inline"
+        data-ng-if="$ctrl.formCtrl.form[$ctrl.id].$error.required && $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.mandatory-error"
+        data-translate-value-field="{{::$ctrl.label | translate}}">
+    </span>
+    <span
+        class="help-inline"
+        data-ng-if="($ctrl.formCtrl.form[$ctrl.id].$error.min ||
+          $ctrl.formCtrl.form[$ctrl.id].$error.max) &&
+          $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.number-min-max-error"
+        data-translate-value-field="{{::$ctrl.label | translate}}"
+        data-translate-value-min="{{::$ctrl.min}}"
+        data-translate-value-max="{{::$ctrl.max}}">
+    </span>
+    <span
+        class="help-inline"
+        data-ng-if="($ctrl.formCtrl.form[$ctrl.id].$error.pattern ||
+          $ctrl.formCtrl.form[$ctrl.id].$error.number) &&
+          $ctrl.formCtrl.form[$ctrl.id].$dirty"
+        data-translate="common.number-pattern-error"
+        data-translate-value-field="{{::$ctrl.label | translate}}"
+        data-translate-value-pattern="{{::$ctrl.nbPatternHuman}}">
+    </span>
+  </div>
+  <!-- If type checkbox in searchTemplate -->
+  <var-radio-button
+      data-class-input="{{::$ctrl.classInput}}"
+      data-class-label="{{::$ctrl.classLabel}}"
+      data-ng-if="::!$ctrl.isReadOnly && $ctrl.type === 'checkbox' && $ctrl.searchForm"
+      data-entity-name="{{::$ctrl.entityName}}"
+      data-input-name="{{::$ctrl.name}}"
+      data-is-protected="::$ctrl.isProtected"
+      data-label="::$ctrl.label"
+      data-mandatory="false"
+      data-ng-model="$ctrl.ngModel"
+      data-var-name="{{::$ctrl.varName}}">
+  </var-radio-button>
+</div>

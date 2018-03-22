@@ -1,0 +1,8 @@
+<div
+    data-uib-alert
+    data-ng-repeat="message in $ctrl.messages"
+    data-type="{{::message.level}}"
+    data-close="$ctrl.removeMessage(message.id)">
+  {{::message.content | translate:message.param }}
+</div>
+

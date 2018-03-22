@@ -1,0 +1,7 @@
+<ol>
+  <li data-ng-repeat="n in $ctrl.range($ctrl.const.NB_DISPLAY_BEGIN + 1, $ctrl.contexts.length - $ctrl.const.NB_DISPLAY_END - 1)">
+    <span data-ng-click="$ctrl.goto($ctrl.contexts[n])">
+    {{$ctrl.contexts[n].title || $ctrl.contexts[n].action.name.front}}
+    </span>
+  </li>
+</ol>

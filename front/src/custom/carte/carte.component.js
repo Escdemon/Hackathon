@@ -121,9 +121,7 @@ function MonController($scope, restService, entityModel) {
         function load()
         {
             $ctrl.loadDatas();
-            console.log($ctrl.rows);
-            var x_val = $("#x").val();
-            var y_val = $("#y").val();
+
             if($ctrl.rows.length != 0 && points.length != 0)
             {
                 var x_fin = points[points.length-1][0];
@@ -134,6 +132,10 @@ function MonController($scope, restService, entityModel) {
                     draw($ctrl.rows[k].x, $ctrl.rows[k].y);
                     k--;
                 }
+            }
+            else if ($ctrl.rows.length != 0)
+            {
+              points.push(new Array($ctrl.rows[$ctrl.rows.length-1].x,$ctrl.rows[$ctrl.rows.length-1].y,$ctrl.rows[$ctrl.rows.length-1].status));  
             }
           points.push(new Array(x_val,y_val,status));
             setTimeout('load',1000);

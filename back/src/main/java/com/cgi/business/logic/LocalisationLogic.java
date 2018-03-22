@@ -55,18 +55,27 @@ public class LocalisationLogic extends DefaultLogic<Localisation> implements Loc
 	
 	private Localisation getPositionString() {
 		try {
-			FileInputStream fis = new FileInputStream(new File("C:\\tmp\\position.txt"));
+			FileInputStream fis = new FileInputStream(new File("C:\\tmp\\position.json"));
 			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 			String line = null;
 			Localisation temp = new Localisation();
 			while ((line = br.readLine()) != null) {
-				Pattern p = Pattern.compile("([0-9]*) ([0-9]*)");
+				/*Pattern p = Pattern.compile("([0-9]*) ([0-9]*)");
 				Matcher m = p.matcher(line);
 				m.find();
 				Integer coordX = Integer.valueOf(m.group(1));
 				Integer coordY = Integer.valueOf(m.group(2));
 				temp.setCoordX(coordX);
-				temp.setCoordY(coordY);
+				temp.setCoordY(coordY);*/
+				try {
+					if (!line.equals("") && line.length() > 13 && line.substring(0,1).equals("x")) {
+				        String[] t = line.split(" ");
+				        temp.setCoordX(Integer.valueOf(t[0].split(":")[1]));
+				        temp.setCoordX(Integer.valueOf(t[1].split(":")[1]));   
+	                }
+	            } catch (ArrayIndexOutOfBoundsException e) {
+	            	continue;
+	            }
 			}		 
 			br.close();
 			return temp;

@@ -15,6 +15,7 @@ import com.cgi.commons.db.DbQuery;
 import com.cgi.commons.ref.context.RequestContext;
 import com.cgi.commons.ref.entity.EntityManager;
 import com.cgi.commons.ref.entity.EntityModel;
+import com.cgi.commons.utils.ApplicationUtils;
 
 /**
  * MonitorServlet which allow acces to application status
@@ -30,6 +31,7 @@ public class MonitorServlet extends HttpServlet {
 	 */
 	public MonitorServlet() {
 		super();
+		ApplicationUtils.getApplicationLogic().initializeApplication(ApplicationUtils.getApplicationContext());
 	}
 
 	/**

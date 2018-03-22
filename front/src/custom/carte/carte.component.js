@@ -54,9 +54,6 @@ function MonController($scope, restService, entityModel) {
             ctx.stroke();
         }
         
-        
-         
- 
         function getCase(x, y)
         {
             for(var z =0; z < cases.length; z++)

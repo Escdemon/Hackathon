@@ -30,7 +30,7 @@ public class LocalisationLogic extends DefaultLogic<Localisation> implements Loc
 	public List<Key> doCustomAction(Request<Localisation> request, Localisation entity, RequestContext ctx) {
 		Action action = request.getAction();
 		if (action.is(Actions.ACTION_CREATE) || action.is(Actions.ACTION_CREATE_ALERT)) {
-			DB.insert(entity, ctx);
+			DB.insert(entity, action, ctx);
 		}
 		return super.doCustomAction(request, entity, ctx);
 	}
@@ -71,7 +71,7 @@ public class LocalisationLogic extends DefaultLogic<Localisation> implements Loc
 					if (!line.equals("") && line.length() > 13 && line.substring(0,1).equals("x")) {
 				        String[] t = line.split(" ");
 				        temp.setCoordX(Integer.valueOf(t[0].split(":")[1]));
-				        temp.setCoordX(Integer.valueOf(t[1].split(":")[1]));   
+				        temp.setCoordY(Integer.valueOf(t[1].split(":")[1]));   
 	                }
 	            } catch (ArrayIndexOutOfBoundsException e) {
 	            	continue;

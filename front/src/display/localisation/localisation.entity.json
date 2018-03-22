@@ -125,6 +125,8 @@
   "queries": [
     {
       "name": "localisation"
+    }, {
+      "name": "localisations"
     }
   ],
   "pk": [

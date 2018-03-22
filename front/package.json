@@ -42,7 +42,7 @@
     "predist": "npm install --no-optional",
     "dist": "webpack -p --hash",
     "prestart": "npm install --no-optional",
-    "start": "webpack-dev-server -d --progress --colors --port 8888 --content-base dist",
+    "start": "webpack-dev-server -d --progress --colors --port 6891 --content-base dist",
     "pretest-headless": "npm install --no-optional",
     "test-headless": "jshint -c .jshintrc src --verbose & jscs src -c .jscsrc & karma start karma.conf.js --browsers PhantomJS2",
     "pretest": "npm install --no-optional",

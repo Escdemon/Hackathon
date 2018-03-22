@@ -455,6 +455,49 @@ public class LocalisationEndpoint extends AbstractEndpoint implements Localisati
 	}
 
 	/**
+	 * Endpoint for query "LOCALISATIONS"<br/>
+	 *
+	 * @return List Localisation of result.
+	 */
+	@GET
+	@Path("/query/localisations")
+	public RestResponse localisationsList(
+		@QueryParam("order-by") String orderByName,
+		@QueryParam("order-direction") String orderDirection,
+		@QueryParam("start-index") @DefaultValue("0") int startIndex,
+		@QueryParam("length") @DefaultValue("200") int length,
+		@QueryParam("action") String action,
+		@QueryParam("search") String searchCriteria,
+		@QueryParam("link-key") String linkKey,
+		@QueryParam("link-entity") String linkEntity,
+		@QueryParam("link-name") String linkName,
+		@Context HttpServletRequest httpRequest) {
+
+		try (RequestContext context = WsUserMgr.getInstance().getRequestContext(httpRequest)) {
+			ResultList resultList = getResultList(
+				ENTITY_NAME,
+				Query.LOCALISATIONS,
+				orderByName,
+				orderDirection,
+				startIndex,
+				length,
+				action,
+				searchCriteria,
+				linkKey,
+				linkEntity,
+				linkName,
+				httpRequest,
+				context
+			);
+			RestResponse restResponse = new RestResponse(resultList, context);
+			return restResponse;
+		} catch (Exception ex) {
+			logger.error("Cannot request entity", ex);
+			throw ex;
+		}
+	}
+
+	/**
 	 * Endpoint for retriving an Localisation from its children
 	 *
 	 * @return The {@link com.cgi.models.rest.LocalisationRest Rest Entity} if found.

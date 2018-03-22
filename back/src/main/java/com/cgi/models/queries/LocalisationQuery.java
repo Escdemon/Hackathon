@@ -18,6 +18,18 @@ public class LocalisationQuery extends AbstractEntityQuery {
 	/** Initialize internal query repository */
 	static { 
 		QUERIES = new HashMap<String, DbQuery>();
+		
+		// Initialization of query LOCALISATIONS
+		DbQuery localisations = new DbQuery(LocalisationConstants.ENTITY_NAME, LocalisationConstants.Alias.LOCALISATIONS.T1);
+		localisations.setName(LocalisationConstants.Query.LOCALISATIONS);
+		localisations.addColumn(LocalisationConstants.Vars.ID, LocalisationConstants.Alias.LOCALISATIONS.T1);
+		localisations.addColumn(LocalisationConstants.Vars.COORD_X, LocalisationConstants.Alias.LOCALISATIONS.T1);
+		localisations.addColumn(LocalisationConstants.Vars.COORD_Y, LocalisationConstants.Alias.LOCALISATIONS.T1);
+		localisations.addColumn(LocalisationConstants.Vars.STATUT, LocalisationConstants.Alias.LOCALISATIONS.T1);
+		localisations.addColumn(LocalisationConstants.Vars.HEURE, LocalisationConstants.Alias.LOCALISATIONS.T1);
+		localisations.addCondEq(LocalisationConstants.Vars.BALISE_ID, LocalisationConstants.Alias.LOCALISATIONS.T1, 1L);
+		localisations.addSortBy(LocalisationConstants.Vars.HEURE, LocalisationConstants.Alias.LOCALISATIONS.T1, DbQuery.ASC);
+		QUERIES.put(LocalisationConstants.Query.LOCALISATIONS, localisations);
 				
 		DbQuery localisation = new DbQuery(LocalisationConstants.ENTITY_NAME, LocalisationConstants.Alias.LOCALISATION.T1);
 		localisation.setName(LocalisationConstants.Query.LOCALISATION);
@@ -48,6 +60,8 @@ public class LocalisationQuery extends AbstractEntityQuery {
 	 */
 	@Deprecated
 	public interface Query {
+		/** Query LOCALISATIONS. */
+		String QUERY_LOCALISATIONS = LocalisationConstants.Query.LOCALISATIONS;
 		/** Query LOCALISATION. */
 		String QUERY_LOCALISATION = LocalisationConstants.Query.LOCALISATION;
 	}
@@ -58,6 +72,11 @@ public class LocalisationQuery extends AbstractEntityQuery {
 	 */
 	@Deprecated
 	public interface Alias {
+		/** Aliases for query LOCALISATIONS. */
+		interface QUERY_LOCALISATIONS {
+			/** Alias T1. */
+			String LOCALISATION_T1 = LocalisationConstants.Alias.LOCALISATIONS.T1;
+		}
 		/** Aliases for query LOCALISATION. */
 		interface QUERY_LOCALISATION {
 			/** Alias T1. */
@@ -68,6 +87,15 @@ public class LocalisationQuery extends AbstractEntityQuery {
 	@Override
 	public Set<String> getQueryNames() {
 		return QUERIES.keySet();
+	}
+
+	/**
+	 * Returns a clone of DbQuery named LOCALISATIONS.
+	 * 
+	 * @return clone of DbQuery named LOCALISATIONS.
+	 */
+	public static DbQuery getLocalisationsQuery() {
+		return QUERIES.get(LocalisationConstants.Query.LOCALISATIONS).clone();
 	}
 
 	/**

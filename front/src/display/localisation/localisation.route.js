@@ -3,7 +3,8 @@ module.exports = (function() {
 
   var entityName = 'localisation';
   var templatesQuery = {
-    'localisation': require('.\/queries\/localisation.template.html')
+    'localisation': require('.\/queries\/localisation.template.html'),
+    'localisations': require('.\/queries\/localisations.template.html')
   };
 
   localisationRoutes.$inject = ['$routeProvider'];

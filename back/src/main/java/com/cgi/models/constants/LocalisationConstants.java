@@ -86,6 +86,8 @@ public interface LocalisationConstants {
 	interface Query {
 		/** Query LOCALISATION. */
 		String LOCALISATION = "LOCALISATION";
+		/** Query LOCALISATIONS. */
+		String LOCALISATIONS = "LOCALISATIONS";
 	}
 
 	/** Holder for the query aliases. */
@@ -106,6 +108,21 @@ public interface LocalisationConstants {
 			String T1_STATUT = "T1_statut";
 			/** Table Alias T1, Var baliseId */
 			String T1_BALISE_ID = "T1_baliseId";
+		}
+		/** Aliases for query LOCALISATIONS. */
+		interface LOCALISATIONS { 
+			/** Entity LOCALISATION, alias T1 */
+			String T1 = "T1";
+			/** Table Alias T1, Var id */
+			String T1_ID = "T1_id";
+			/** Table Alias T1, Var coordX */
+			String T1_COORD_X = "T1_coordX";
+			/** Table Alias T1, Var coordY */
+			String T1_COORD_Y = "T1_coordY";
+			/** Table Alias T1, Var statut */
+			String T1_STATUT = "T1_statut";
+			/** Table Alias T1, Var heure */
+			String T1_HEURE = "T1_heure";
 		}
 	}
 

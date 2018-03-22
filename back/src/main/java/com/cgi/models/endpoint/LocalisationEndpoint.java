@@ -95,7 +95,7 @@ public class LocalisationEndpoint extends AbstractEndpoint implements Localisati
 	 *
 	 * @return Empty response
 	 */
-	@POST
+	@PUT
 	@Path("/action/create-alert")
 	public RestResponse createAlert(
 		@Context UriInfo uriInfo,

@@ -33,7 +33,8 @@ function MonController($scope, restService, entityModel) {
         var points = new Array();
         var map = new Array(600,600);
         var taille = new Array(25,50);
-        var zoom = 1;        
+        var zoom = 1;
+        var loop = 0;      
         
         var canvas = document.getElementById("canvas");
           if (canvas.getContext) {
@@ -45,6 +46,7 @@ function MonController($scope, restService, entityModel) {
             {
                 for(var j=0; j<map[1]; j+=taille[1])
                 {
+                    ctx.strokeStyle="white";
                     ctx.strokeRect(i, j, i+taille[0], j+taille[1]);
                     cases.push({x:i, y:j, status:""});
                 }
@@ -122,7 +124,7 @@ function MonController($scope, restService, entityModel) {
                 var x_fin = points[points.length-1][0];
                 var y_fin = points[points.length-1][1];
                 var k = $ctrl.rows.length-1
-                while($ctrl.rows[k].x != x_fin && $ctrl.rows[k].y != y_fin)
+                while($ctrl.rows[k] && $ctrl.rows[k].x != x_fin && $ctrl.rows[k].y != y_fin)
                 {
                     var drawX = ($ctrl.rows[k].x/10);
                     var drawY = ($ctrl.rows[k].y/10);
@@ -134,14 +136,11 @@ function MonController($scope, restService, entityModel) {
             {
               points.push(new Array($ctrl.rows[$ctrl.rows.length-1].x/10,$ctrl.rows[$ctrl.rows.length-1].y/10,$ctrl.rows[$ctrl.rows.length-1].statut));  
             }
-
-
-            //setTimeout('loadArray',1000);
         }
         
         function draw(x_val, y_val, status)
         {
-            var x_rec = Math.floor(x_val/taille[0])*taille[0];
+              var x_rec = Math.floor(x_val/taille[0])*taille[0];
               var y_rec = Math.floor(y_val/taille[1])*taille[1];
               var canvas = document.getElementById("canvas");
               if (canvas.getContext) {
@@ -150,19 +149,29 @@ function MonController($scope, restService, entityModel) {
             
 
                   var rec = getCase(x_rec, y_rec);
-                  if(status == false && rec.status != "error")
-                  {
-                      ctx.fillStyle = 'rgb(200, 0, 0)';
-                      ctx.fillRect(x_rec, y_rec, taille[0], taille[1]);
-                      rec.status = "error";
-                  }
-                  else if(rec.status == "" || rec.status == "blank")
-                  {
-                      ctx.fillStyle = 'rgb(0, 200, 0)';
-                      ctx.fillRect(x_rec, y_rec, taille[0], taille[1]);
-                      rec.status = "success";
+                  if (rec){
+                    if(status == false && rec.status != "error")
+                    {
+                        ctx.fillStyle = 'rgb(200, 0, 0)';
+                        ctx.fillRect(x_rec, y_rec, taille[0], taille[1]);
+                        rec.status = "error";
+                        easter();
+                    }
+                    else if(rec.status == "" || rec.status == "blank")
+                    {
+                        ctx.fillStyle = 'rgb(0, 200, 0)';
+                        ctx.fillRect(x_rec, y_rec, taille[0], taille[1]);
+                        rec.status = "success";
+                    }
                   }
               }
+        }
+
+        function easter(){
+            loop = loop + 1 ;
+            if (loop > 3){
+                $("div.easter img").addClass("bouh");
+            }
         }
         
         loadArray();

@@ -29,7 +29,6 @@ import com.cgi.commons.utils.FunctionalException;
 import com.cgi.commons.utils.MessageUtils;
 import com.cgi.commons.utils.TechnicalException;
 import com.cgi.commons.utils.reflect.DomainUtils;
-import com.cgi.models.beans.Localisation;
 
 /**
  * Class for Database access.
@@ -572,15 +571,7 @@ public class DB {
 		if (logic.internalDoCheck(domain, action, ctx)) {
 			throw new FunctionalException(new ArrayList<Message>(ctx.getMessages()));
 		}
-		String className = domain.getClass().getName();
-		if (className.equals("com.cgi.models.beans.Localisation")) {
-			Object x = ((Localisation)domain).getCoordX();
-			if (x != null) {
-				insertEntity(domain, ctx);
-			}
-		} else {
-			insertEntity(domain, ctx);
-		}
+		insertEntity(domain, ctx);
 		logic.internalDbPostSave(domain, action, ctx);
 	}
 

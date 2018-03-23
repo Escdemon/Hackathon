@@ -1,0 +1,13 @@
+{
+  "attach.action-label": "Attacher",
+  "create.action-label": "Cr\u00E9er",
+  "delete.action-label": "Supprimer",
+  "detach.action-label": "D\u00E9tacher",
+  "display.action-label": "Afficher",
+  "image.var-label": "Image",
+  "list.action-label": "Lister",
+  "photo.t1.id.column-label": "Technical ID",
+  "photo.t1.image.column-label": "Image",
+  "photo.template-title": "PHOTO",
+  "update.action-label": "Modifier"
+}

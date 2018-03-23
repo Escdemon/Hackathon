@@ -7,7 +7,6 @@ return {
     controller: MonController,
     template: require('./carte.template.html'),
     bindings: {
-        ngModel: '=' 
     }
 };
 
@@ -20,7 +19,7 @@ function MonController($scope, restService, entityModel) {
     var deltaX = 300;
     var deltaY = 300;
 
-    $scope.photo = undefined;
+    $ctrl.photo = undefined;
 
 
     function loadDatas() {
@@ -135,8 +134,8 @@ function MonController($scope, restService, entityModel) {
                 var k = $ctrl.rows.length-1
                 while($ctrl.rows[k] && $ctrl.rows[k].x != x_fin && $ctrl.rows[k].y != y_fin)
                 {
-                    var drawX = (200 + $ctrl.rows[k].y/ratio);
-                    var drawY = (200 + $ctrl.rows[k].x/ratio);
+                    var drawX = (500 - $ctrl.rows[k].y/ratio);
+                    var drawY = (600 - $ctrl.rows[k].x/ratio);
                     draw(drawX, drawY, $ctrl.rows[k].statut); 
                     k--;
                 }

@@ -14,8 +14,10 @@
 </div>
 <div class="nuvia_photo">
         <label>Prendre une photo :</label>
-        <input type="file" accept="image/*" capture>
-        <button>Enregistrer la photo</button>
+        <input id="profile-img" type="file" accept="image/*" capture>
+        <button ng-click="">Enregistrer la photo</button>
+        <button id="button_photo" onclick="displayPhoto();">Voir la photo</button>
+        <img src="" id="profile-img-tag" width="200px" />
 </div>
 <br/>
 <div class="nuvia_photo">
@@ -26,3 +28,28 @@
 <div class="easter">
     <img src="../../img/chuck.jpg" alt=""/>
 </div>
+<script type="text/javascript">
+    function displayPhoto(){
+        var photo = $('#profile-img-tag');
+        if (photo.attr('class') === 'bouh'){
+            photo.removeClass("bouh");
+            $('#button_photo').text('Voir la photo');
+        } else {
+            photo.addClass("bouh");
+            $('#button_photo').text('Cacher la photo');
+        }
+    }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#profile-img").change(function(){
+        readURL(this);
+    });
+</script>

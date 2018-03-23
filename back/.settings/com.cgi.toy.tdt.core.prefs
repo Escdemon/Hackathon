@@ -1,4 +1,6 @@
 com.cgi.toy.tdt.core.application=NUVIA
+com.cgi.toy.tdt.core.excluded-files=.project;business/*;log4j.properties;custom.css;custom.js;includes/custom/custom*;index/defaultPage.xhtml;static/img/*;WEB-INF/custom-faces-config.xml;WEB-INF/web.xml;pom.xml;MonitorServlet*
+com.cgi.toy.tdt.core.no-library=false
 com.cgi.toy.tdt.core.server=Local TOY
 com.cgi.toy.tdt.core.target=Nuvia
 eclipse.preferences.version=1

@@ -1,0 +1,32 @@
+<group-default
+    data-entity-name="photo"
+    data-is-protected="$ctrl.isProtected"
+    data-name="photo"
+    title-key="photo.photo.template-title">
+  <div class="row">
+    <pk
+        data-is-protected="$ctrl.isProtected"
+        data-name="pk"
+        data-name-parent="$ctrl.id"
+        data-ng-class="$ctrl.addingClass.pk">
+    </pk>
+
+  </div>
+  <div class="row">
+    <var-upload
+        class="form-group col-md-12"
+        data-class-input="col-md-9"
+        data-class-label="control-label col-md-3"
+        data-entity-name="photo"
+        data-is-protected="$ctrl.isProtected"
+        data-label="photo.image.var-label"
+        data-mandatory="$ctrl.mandatory.image"
+        data-name="photo-image"
+        data-ng-model="$ctrl.data.image"
+        data-var-name="image">
+    </var-upload>
+
+  </div>
+
+</group-default>
+

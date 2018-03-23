@@ -2,14 +2,14 @@
 
 /** ---------- MAIN PAGE STRUCTURE -------------**/
 
+/**
   .main-section {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0f3fa+0,d8f0fc+50,b8e2f6+51,b6dffd+100;Shape+2+Style */
-    background: rgb(222,239,255); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(222,239,255,1) 0%, rgba(152,190,222,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: rgb(222,239,255); 
+    background: -moz-linear-gradient(top, rgba(222,239,255,1) 0%, rgba(152,190,222,1) 100%); 
+    background: -webkit-linear-gradient(top, rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); 
+    background: linear-gradient(to bottom, rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); 
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 ); 
-  }
+  }*/
 
   .img-magnifier-container {
     position:relative;
@@ -52,14 +52,59 @@ canvas:hover
   }
 }
 
+.my-legend .legend-title {
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 130%;
+  }
+.my-legend .legend-scale ul {
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+  float: left;
+  list-style: none;
+  }
+.my-legend .legend-scale ul li {
+  font-size: 100%;
+  list-style: none;
+  margin-left: 0;
+  line-height: 20px;
+  margin-bottom: 6px;
+  }
+.my-legend ul.legend-labels li span {
+  display: block;
+  float: left;
+  height: 16px;
+  width: 30px;
+  margin-right: 5px;
+  margin-left: 0;
+  border: 1px solid #999;
+  }
+.my-legend .legend-source {
+  font-size: 100%;
+  color: #999;
+  clear: both;
+  }
+.my-legend a {
+  color: #777;
+  }
+  .my-legend {
+  margin-top: 5%;
+  margin-left: 5%;
+  }
+
+
 i.icons.fa.fa-exclamation-triangle{
   color: #e31937;
 }
 
 canvas { 
+  position:absolute;
   border: 1px solid black;
-  border-radius: 50%;
-  margin-top:20px;
+    border-radius: 50%;
+  //margin-top:5px;
+  margin-right: 60%;
   background: linear-gradient(#959595, rgb(202, 201, 201));
 }
 

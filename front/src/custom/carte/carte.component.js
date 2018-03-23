@@ -6,7 +6,9 @@ module.exports = (function (angular) {
 return {
     controller: MonController,
     template: require('./carte.template.html'),
-    bindings: {}
+    bindings: {
+        ngModel: '=' 
+    }
 };
 
 function MonController($scope, restService, entityModel) {
@@ -17,6 +19,9 @@ function MonController($scope, restService, entityModel) {
     var ratio = 10;
     var deltaX = 300;
     var deltaY = 300;
+
+    $scope.photo = undefined;
+
 
     function loadDatas() {
         var entity = entityModel.entity('localisation');

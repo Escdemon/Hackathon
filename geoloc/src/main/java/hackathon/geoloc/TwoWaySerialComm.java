@@ -87,15 +87,17 @@ public class TwoWaySerialComm
             byte[] buffer = new byte[1024];
             int len = -1;
             try {
-                while ( ( len = this.in.read(buffer)) > -1 && buffer.length > 13) {
+                while ( ( len = this.in.read(buffer)) > -1 /*&& len > 13*/) {
                 	String coord = new String(buffer,0,len);
                     System.out.print(coord);
                     try {
-	                    if (coord.length() > 0 && coord.substring(0,1).equals("x")) {
+	                    //if (coord.length() > 0 && coord.substring(0,1).equals("x")) {
+                    	if (!("".equals(coord))) {
 		                    Writer output;
 		                    output = new BufferedWriter(new FileWriter("C:/tmp/position.json"));
 		                    String[] t = coord.split(" ");
-	                    	output.append(t[0].split(":")[1] + " " + t[1].split(":")[1]);
+	                    	//output.append(t[0].split(":")[1] + " " + t[1].split(":")[1]);
+		                    output.append(coord);
 	                        output.close();
 	                    }
                     } catch (ArrayIndexOutOfBoundsException e) {
@@ -120,13 +122,23 @@ public class TwoWaySerialComm
             try {                
                 int c = 0;
                 String result = "";
-                while ( ( c = System.in.read()) > -1 ) {
+               /* while ( ( c = System.in.read()) > -1 ) {
                 	
                 	//System.out.println(c);
                     this.out.write(c);
-
                     
-                }         
+                    
+                }     */ 
+                while(true) {
+                	
+                	this.out.write(13);
+                	try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                }
             }
             catch ( IOException e ) {
                 e.printStackTrace();

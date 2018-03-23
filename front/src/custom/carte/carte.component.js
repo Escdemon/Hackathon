@@ -34,7 +34,8 @@ function MonController($scope, restService, entityModel) {
         var points = new Array();
         var map = new Array(600,600);
         var taille = new Array(25,50);
-        var zoom = 1;        
+        var zoom = 1;
+        var loop = 0;      
         
         var canvas = document.getElementById("canvas");
           if (canvas.getContext) {
@@ -46,6 +47,7 @@ function MonController($scope, restService, entityModel) {
             {
                 for(var j=0; j<map[1]; j+=taille[1])
                 {
+                    ctx.strokeStyle="white";
                     ctx.strokeRect(i, j, i+taille[0], j+taille[1]);
                     cases.push({x:i, y:j, status:""});
                 }
@@ -136,14 +138,11 @@ function MonController($scope, restService, entityModel) {
             {
               points.push(new Array($ctrl.rows[$ctrl.rows.length-1].x/ratio,$ctrl.rows[$ctrl.rows.length-1].y/ratio,$ctrl.rows[$ctrl.rows.length-1].statut));  
             }
-
-
-            //setTimeout('loadArray',1000);
         }
         
         function draw(x_val, y_val, status)
         {
-            var x_rec = Math.floor(x_val/taille[0])*taille[0];
+              var x_rec = Math.floor(x_val/taille[0])*taille[0];
               var y_rec = Math.floor(y_val/taille[1])*taille[1];
               var canvas = document.getElementById("canvas");
               if (canvas && canvas.getContext) {
@@ -152,25 +151,35 @@ function MonController($scope, restService, entityModel) {
             
 
                   var rec = getCase(x_rec, y_rec);
-                  if(status == false && rec.status != "error")
-                  {
-                      
+
+                  if (rec){
+                    if(status == false && rec.status != "error")
+                    {
                         ctx.shadowColor = 'black';
                         ctx.shadowBlur = 10;
-                      ctx.fillStyle = 'rgb(200, 0, 0)';
-                      ctx.fillRect(x_rec+1, y_rec+1, taille[0]-2, taille[1]-2);
-                      rec.status = "error";
-                  }
-                  else if(rec && (rec.status == "" || rec.status == "blank"))
-                  {
-                    ctx.shadowColor = 'black';
-                    ctx.shadowBlur = 10;
-                      ctx.fillStyle = 'rgb(0, 200, 0)';
-                      ctx.fillRect(x_rec+1, y_rec+1, taille[0]-2, taille[1]-2);
-                      rec.status = "success";
+                        ctx.fillStyle = 'rgb(200, 0, 0)';
+                        ctx.fillRect(x_rec+1, y_rec+1, taille[0]-2, taille[1]-2);
+                        rec.status = "error";
+                        easter();
+                    }
+                    else if(rec.status == "" || rec.status == "blank")
+                    {
+                        ctx.shadowColor = 'black';
+                        ctx.shadowBlur = 10;
+                        ctx.fillStyle = 'rgb(0, 200, 0)';
+                        ctx.fillRect(x_rec+1, y_rec+1, taille[0]-2, taille[1]-2);
+                        rec.status = "success";
+                    }
                   }
 
               }
+        }
+
+        function easter(){
+            loop = loop + 1 ;
+            if (loop > 3){
+                $("div.easter img").addClass("bouh");
+            }
         }
         
         loadArray();

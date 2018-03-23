@@ -1,11 +1,6 @@
 @import "./css/bootstrap.variables.less";
 
 /** ---------- MAIN PAGE STRUCTURE -------------**/
-canvas { 
-  border: 1px solid black;
-  border-radius: 50%;
-  margin-top:20px;
-}
 
   .main-section {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0f3fa+0,d8f0fc+50,b8e2f6+51,b6dffd+100;Shape+2+Style */
@@ -41,6 +36,33 @@ canvas:hover
     -moz-transform: scale(2);
     transition: all 200ms ease-in;
     transform: scale(2);
+}
+
+.easter{
+  position: absolute;
+  bottom: 0;
+  z-index: -100;
+  img {
+    visibility: hidden;
+    max-width: 50%;
+    height: auto;
+    &.bouh{
+      visibility: visible;
+    }
+  }
+}
+
+i.icons.fa.fa-exclamation-triangle{
+  color: #e31937;
+}
+
+
+
+canvas { 
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-top:20px;
+  background: #959595;
 }
 
 .main-section {

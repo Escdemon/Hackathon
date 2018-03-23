@@ -14,11 +14,12 @@ function MonController($scope, restService, entityModel) {
     $ctrl.rows = [];
     $ctrl.points = [];
     $ctrl.loadDatas = loadDatas;
+    var ratio = 10;
 
     function loadDatas() {
         var entity = entityModel.entity('localisation');
         
-        restService.query(entity,'localisations').then(function (response) {
+        restService.query(entity,'localisations',{length:10000}).then(function (response) {
             $ctrl.rows = [];
             response.data.results.forEach(function (localisation) {
                 $ctrl.rows.push({x: localisation.T1_coordX, y: localisation.T1_coordY, statut: localisation.Val_T1_statut});
@@ -51,6 +52,7 @@ function MonController($scope, restService, entityModel) {
             }
             ctx.closePath();
             ctx.stroke();
+            
         }
         
         function getCase(x, y)
@@ -122,17 +124,17 @@ function MonController($scope, restService, entityModel) {
                 var x_fin = points[points.length-1][0];
                 var y_fin = points[points.length-1][1];
                 var k = $ctrl.rows.length-1
-                while($ctrl.rows[k].x != x_fin && $ctrl.rows[k].y != y_fin)
+                while($ctrl.rows[k] && $ctrl.rows[k].x != x_fin && $ctrl.rows[k].y != y_fin)
                 {
-                    var drawX = ($ctrl.rows[k].x/10);
-                    var drawY = ($ctrl.rows[k].y/10);
-                    draw(drawX, drawY, $ctrl.rows[k].statut);
+                    var drawX = ($ctrl.rows[k].x/ratio);
+                    var drawY = ($ctrl.rows[k].y/ratio);
+                    draw(drawX, drawY, $ctrl.rows[k].statut); 
                     k--;
                 }
             }
             else if ($ctrl.rows.length != 0)
             {
-              points.push(new Array($ctrl.rows[$ctrl.rows.length-1].x/10,$ctrl.rows[$ctrl.rows.length-1].y/10,$ctrl.rows[$ctrl.rows.length-1].statut));  
+              points.push(new Array($ctrl.rows[$ctrl.rows.length-1].x/ratio,$ctrl.rows[$ctrl.rows.length-1].y/ratio,$ctrl.rows[$ctrl.rows.length-1].statut));  
             }
 
 
@@ -144,7 +146,7 @@ function MonController($scope, restService, entityModel) {
             var x_rec = Math.floor(x_val/taille[0])*taille[0];
               var y_rec = Math.floor(y_val/taille[1])*taille[1];
               var canvas = document.getElementById("canvas");
-              if (canvas.getContext) {
+              if (canvas && canvas.getContext) {
                 var ctx = canvas.getContext("2d");
                 var origine = points[points.length-1];
             
@@ -152,21 +154,28 @@ function MonController($scope, restService, entityModel) {
                   var rec = getCase(x_rec, y_rec);
                   if(status == false && rec.status != "error")
                   {
+                      
+                        ctx.shadowColor = 'black';
+                        ctx.shadowBlur = 10;
                       ctx.fillStyle = 'rgb(200, 0, 0)';
-                      ctx.fillRect(x_rec, y_rec, taille[0], taille[1]);
+                      ctx.fillRect(x_rec+1, y_rec+1, taille[0]-2, taille[1]-2);
                       rec.status = "error";
                   }
-                  else if(rec.status == "" || rec.status == "blank")
+                  else if(rec && (rec.status == "" || rec.status == "blank"))
                   {
+                    ctx.shadowColor = 'black';
+                    ctx.shadowBlur = 10;
                       ctx.fillStyle = 'rgb(0, 200, 0)';
-                      ctx.fillRect(x_rec, y_rec, taille[0], taille[1]);
+                      ctx.fillRect(x_rec+1, y_rec+1, taille[0]-2, taille[1]-2);
                       rec.status = "success";
                   }
+
               }
         }
         
         loadArray();
-        var intervalID = setInterval(function(){loadArray();}, 1000);
+        var intervalID = setInterval(function(){loadArray();}, 200);
+        
     });
 }
 }(window.angular));

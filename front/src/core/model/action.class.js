@@ -413,7 +413,7 @@ module.exports = (function (ng) {
           options: options
         };
         var validateAction = customService.get('validate-action')
-        (that.entity.name.front, 'action', currentContext.getData(), params);
+        (that.entity.name.front, 'action', currentContext ? currentContext.getData() : {}, params);
         if (validateAction){
           validateAction.then(function (validation) {
             if (validation) {

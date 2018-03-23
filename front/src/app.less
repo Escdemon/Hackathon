@@ -1,8 +1,47 @@
 @import "./css/bootstrap.variables.less";
 
 /** ---------- MAIN PAGE STRUCTURE -------------**/
-canvas { border: 1px solid black;
-  border-radius: 50%;}
+canvas { 
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-top:20px;
+}
+
+  .main-section {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0f3fa+0,d8f0fc+50,b8e2f6+51,b6dffd+100;Shape+2+Style */
+    background: rgb(222,239,255); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(222,239,255,1) 0%, rgba(152,190,222,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 ); 
+  }
+
+  .img-magnifier-container {
+    position:relative;
+  }
+  .img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 100px;
+    height: 100px;
+  }
+
+canvas:hover
+{
+    box-shadow: 0px 0px 150px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(2);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(2);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(2);
+    transition: all 200ms ease-in;
+    transform: scale(2);
+}
 
 .main-section {
   .calc(height, ~"100% - @{header-height}");

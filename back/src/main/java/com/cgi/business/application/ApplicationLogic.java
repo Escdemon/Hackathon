@@ -36,9 +36,10 @@ public class ApplicationLogic extends DefaultApplicationLogic {
 			    DB.insert(new Localisation(), Localisation.getEntityModel().getAction(LocalisationConstants.Actions.ACTION_CREATE), ctx);
 			    //System.out.println("done");
 			    ctx.getDbConnection().commit();
+			    ctx.close();
 			  }
 			})			
-				, 1*1000, 10*1000, TimeUnit.MILLISECONDS);
+				, 1*1000, 200, TimeUnit.MILLISECONDS);
 		super.initializeApplication(context);
 	}
 	

@@ -15,6 +15,8 @@ function MonController($scope, restService, entityModel) {
     $ctrl.points = [];
     $ctrl.loadDatas = loadDatas;
     var ratio = 10;
+    var deltaX = 300;
+    var deltaY = 300;
 
     function loadDatas() {
         var entity = entityModel.entity('localisation');

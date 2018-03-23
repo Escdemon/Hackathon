@@ -16,7 +16,7 @@ function MonController($scope, restService, entityModel) {
     $ctrl.rows = [];
     $ctrl.points = [];
     $ctrl.loadDatas = loadDatas;
-    var ratio = 10;
+    var ratio = 20;
     var deltaX = 300;
     var deltaY = 300;
 
@@ -135,8 +135,8 @@ function MonController($scope, restService, entityModel) {
                 var k = $ctrl.rows.length-1
                 while($ctrl.rows[k] && $ctrl.rows[k].x != x_fin && $ctrl.rows[k].y != y_fin)
                 {
-                    var drawX = ($ctrl.rows[k].x/ratio);
-                    var drawY = ($ctrl.rows[k].y/ratio);
+                    var drawX = (200 + $ctrl.rows[k].y/ratio);
+                    var drawY = (200 + $ctrl.rows[k].x/ratio);
                     draw(drawX, drawY, $ctrl.rows[k].statut); 
                     k--;
                 }

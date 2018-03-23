@@ -1,11 +1,11 @@
 <div class='my-legend'>
-    <div class='legend-title'>Cleaning progress of an aero</div>
+    <div class='legend-title'>Maintenance des packings de Cruas</div>
     <div class='legend-scale'>
       <ul class='legend-labels'>
-        <li><span style='background:rgb(17, 168, 55);'></span>Clean</li>
-        <li><span style='background:rgb(184, 5, 5);'></span>Problem</li>
-        <li><span style='background:rgb(107, 107, 107);'></span>Signal loss</li>
-        <li><span style='background:rgb(179, 179, 179);'></span>To do</li>
+        <li><span style='background:rgb(17, 168, 55);'></span>Propre</li>
+        <li><span style='background:rgb(184, 5, 5);'></span>Anomalies</li>
+        <li><span style='background:rgb(107, 107, 107);'></span>Signal perdu</li>
+        <li><span style='background:rgb(179, 179, 179);'></span>A faire</li>
       </ul>
     </div>
 </div>
@@ -14,8 +14,14 @@
 </div>
 <div class="nuvia_photo">
         <label>Prendre une photo :</label>
-        <input ng-model="photo" type="file" accept="image/*" capture>
+        <input type="file" accept="image/*" capture>
         <button>Enregistrer la photo</button>
+</div>
+<br/>
+<div class="nuvia_photo">
+        <label>Enregistrement audio :</label>
+        <input type="file" accept="audio/*" capture="microphone">
+        <button>Enregistrer l'audio</button>
 </div>
 <div class="easter">
     <img src="../../img/chuck.jpg" alt=""/>
